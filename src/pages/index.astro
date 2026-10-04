@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroLookbook from '../components/HeroLookbook.astro';
+import BentoShowcase from '../components/BentoShowcase.astro';
+import MannequinCatalog from '../components/MannequinCatalog.astro';
+import CustomFinishingSection from '../components/CustomFinishingSection.astro';
+---
+
+<Layout
+  title="Manekin untuk Retail, Sports & Atelier"
+  description="Temukan manekin sports, boutique, dan dressmaker di Link Manekin Indonesia. Jelajahi bentuk, ukuran, custom finishing, dan penawaran B2B dari studio Tangerang."
+>
+  <HeroLookbook />
+  <BentoShowcase />
+  <MannequinCatalog limit={4} />
+  <CustomFinishingSection />
+  <section class="section-shell studio-section">
+    <div>
+      <p class="eyebrow">04 / FROM OUR STUDIO TO YOUR SPACE</p>
+      <h2>
+        Dirancang untuk
+        <br />
+        <em>cara Anda bekerja.</em>
+      </h2>
+    </div>
+    <div class="studio-text">
+      <p>
+        Koleksi yang tepat dimulai dari percakapan yang tepat. Ceritakan
+        kebutuhan ruang, jenis busana, dan skala proyek Anda. Kami bantu
+        menyusun pilihan bentuk sampai finishing.
+      </p>
+      <div class="process-list">
+        <div class="process-row">
+          <span>01</span>
+          <div>
+            <h3>Pilih bentuk</h3>
+            <p>Temukan pose dan proporsi untuk koleksi Anda.</p>
+          </div>
+        </div>
+        <div class="process-row">
+          <span>02</span>
+          <div>
+            <h3>Beri karakter</h3>
+            <p>Sesuaikan material, warna, dan detail base.</p>
+          </div>
+        </div>
+        <div class="process-row">
+          <span>03</span>
+          <div>
+            <h3>Diskusikan kebutuhan</h3>
+            <p>Minta penawaran sesuai jumlah dan kota pengiriman.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,124 @@
+---
+import { products, finishes } from '../data/products';
+const phone = (import.meta.env.PUBLIC_WHATSAPP_NUMBER || '').trim();
+if (phone && !/^[1-9]\d{7,14}$/.test(phone))
+  throw new Error(
+    'PUBLIC_WHATSAPP_NUMBER harus 8–15 digit dengan kode negara.',
+  );
+---
+
+<dialog
+  id="quote-dialog"
+  class="quote-dialog"
+  aria-labelledby="quote-title"
+  data-phone={phone}
+>
+  <div class="dialog-top">
+    <span class="eyebrow">LET'S MAKE IT YOURS</span>
+    <button class="close-button" data-close-dialog aria-label="Tutup penawaran">
+      ×
+    </button>
+  </div>
+  <h2 id="quote-title">
+    Mulai sebuah
+    <br />
+    <em>kesan.</em>
+  </h2>
+  <p>
+    Pilih bentuk dan kebutuhan Anda. Studio akan membantu menyusun penawaran
+    yang sesuai.
+  </p>
+  <form id="quote-form">
+    <div class="form-columns">
+      <label>
+        Nama bisnis
+        <input
+          name="business"
+          required
+          maxlength="120"
+          autocomplete="organization"
+          placeholder="Nama butik / perusahaan"
+        />
+      </label>
+      <label>
+        Kota pengiriman
+        <input
+          name="city"
+          required
+          maxlength="100"
+          autocomplete="address-level2"
+          placeholder="Contoh: Tangerang"
+        />
+      </label>
+    </div>
+    <fieldset>
+      <legend>Daftar kebutuhan</legend>
+      <div id="quote-lines"></div>
+      <button type="button" class="inline-link" id="add-quote-line">
+        + Tambah produk
+      </button>
+    </fieldset>
+    <label>
+      Catatan proyek <span class="optional">(opsional)</span>
+      <textarea
+        name="notes"
+        maxlength="1500"
+        rows="2"
+        placeholder="Logo engraving, pilihan base, atau target waktu…"
+      ></textarea>
+    </label>
+    <details class="quote-preview">
+      <summary>Lihat ringkasan pesan</summary>
+      <pre id="quote-message"></pre>
+    </details>
+    <p id="quote-error" role="alert" hidden></p>
+    <button class="button button-dark" type="submit">
+      {phone ? 'Minta penawaran via WhatsApp' : 'Buka penawaran di WhatsApp'}{' '}
+      <span>↗</span>
+    </button>
+    <p class="small-copy">
+      {phone
+        ? 'Pesan dibuka untuk Anda tinjau sebelum dikirim.'
+        : 'Pilih kontak sales Link Manekin di WhatsApp, lalu tinjau pesan sebelum mengirim.'}
+    </p>
+  </form>
+</dialog>
+<template id="quote-line-template">
+  <div class="quote-line">
+    <label>
+      Produk
+      <select name="product">
+        {products.map((p) => (
+          <option value={p.id}>
+            {p.id} — {p.name}
+          </option>
+        ))}
+      </select>
+    </label>
+    <div class="line-options">
+      <label>
+        Finishing
+        <select name="finish">
+          {finishes.map((f) => (
+            <option value={f}>{f}</option>
+          ))}
+        </select>
+      </label>
+      <label class="quantity-label">
+        Unit
+        <input
+          type="number"
+          name="quantity"
+          min="1"
+          max="9999"
+          step="1"
+          value="1"
+          required
+        />
+      </label>
+      <button type="button" class="remove-line" aria-label="Hapus produk">
+        ×
+      </button>
+    </div>
+  </div>
+</template>

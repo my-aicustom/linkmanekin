@@ -1,0 +1,60 @@
+---
+import Arrow from './Arrow.astro';
+const path = Astro.url.pathname;
+const nav = [
+  ['/', 'Showroom'],
+  ['/katalog/', 'Koleksi'],
+  ['/sports-mannequin/', 'Sports'],
+  ['/kustom-finishing/', 'Finishing'],
+];
+---
+
+<header class="site-header">
+  <a href="/" class="wordmark" aria-label="Link Manekin, halaman utama">
+    <svg
+      width="32"
+      height="39"
+      viewBox="0 0 32 39"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M1 1v37h29M8 30V1l11 19L30 1v29"
+        stroke="currentColor"
+        stroke-width="1.3"
+      />
+    </svg>
+    <span>
+      LINK <span>MANEKIN</span>
+    </span>
+  </a>
+  <nav class="desktop-nav" aria-label="Navigasi utama">
+    {nav.map(([url, label]) => (
+      <a href={url} aria-current={path === url ? 'page' : undefined}>
+        {label}
+      </a>
+    ))}
+  </nav>
+  <div class="header-actions">
+    <button class="text-cta header-quote" data-quote-open>
+      Mulai proyek <Arrow diagonal />
+    </button>
+    <button
+      class="menu-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Buka menu"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Navigasi seluler" hidden>
+    {nav.map(([url, label]) => (
+      <a href={url} aria-current={path === url ? 'page' : undefined}>
+        {label}
+      </a>
+    ))}
+    <button data-quote-open>Minta penawaran ↗</button>
+  </nav>
+</header>

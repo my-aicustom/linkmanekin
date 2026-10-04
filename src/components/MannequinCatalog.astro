@@ -1,0 +1,110 @@
+---
+import { products, categories } from '../data/products';
+import Arrow from './Arrow.astro';
+interface Props {
+  limit?: number;
+  category?: string;
+  heading?: boolean;
+}
+const { limit, category, heading = true } = Astro.props;
+const selection = products
+  .filter((p) => !category || p.category === category)
+  .slice(0, limit);
+const visibleCategories = categories.filter(
+  (label) =>
+    label === 'Semua' ||
+    selection.some((product) => product.category === label),
+);
+---
+
+<section class="section-shell catalog-section" id="catalog" data-catalog>
+  {heading && (
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">02 / SELECTED FORMS</p>
+        <h2>
+          Detail yang membuat
+          <br />
+          <em>perbedaan.</em>
+        </h2>
+      </div>
+      <a class="inline-link" href="/katalog/">
+        Lihat seluruh koleksi <Arrow diagonal />
+      </a>
+    </div>
+  )}
+  {!category && (
+    <div class="catalog-toolbar">
+      <div class="filter-list" role="group" aria-label="Filter kategori">
+        {visibleCategories.map((label) => (
+          <button data-filter={label} aria-pressed={label === 'Semua'}>
+            {label}
+          </button>
+        ))}
+      </div>
+      <span class="catalog-count" data-catalog-count aria-live="polite">
+        {selection.length} bentuk
+      </span>
+    </div>
+  )}
+  <div class="product-grid">
+    {selection.map((product, index) => (
+      <article class="product-card" data-category={product.category}>
+        <div class="product-image">
+          <span class="product-number">
+            {String(index + 1).padStart(2, '0')} / {product.id}
+          </span>
+          <button
+            class="image-button"
+            data-spec-open={product.id}
+            aria-label={`Lihat ukuran ${product.name}`}
+          >
+            <img
+              src={product.image}
+              width="650"
+              height="800"
+              alt={`Ilustrasi ${product.name}, ${product.description.toLowerCase()}`}
+              loading="lazy"
+            />
+          </button>
+          <span class="material-badge">{product.material}</span>
+          <button
+            class="product-plus"
+            data-quote-open={product.id}
+            aria-label={`Minta penawaran ${product.name}`}
+          >
+            +
+          </button>
+        </div>
+        <div class="product-heading">
+          <div>
+            <span class="eyebrow">
+              {product.category} / {product.finish}
+            </span>
+            <h3>
+              <button data-spec-open={product.id}>{product.name}</button>
+            </h3>
+          </div>
+          <button
+            class="spec-link"
+            data-spec-open={product.id}
+            aria-label={`Detail ${product.name}`}
+          >
+            <Arrow diagonal />
+          </button>
+        </div>
+        <div class="product-meta">
+          <span>
+            {product.dimensions[0].label}{' '}
+            <strong>{product.dimensions[0].value} cm</strong>
+          </span>
+          <button data-spec-open={product.id}>Lihat ukuran</button>
+        </div>
+      </article>
+    ))}
+  </div>
+  <p class="catalog-note">
+    Visual merupakan studi bentuk. Dimensi referensi; konfirmasi ukuran dan
+    ketersediaan dengan studio saat pemesanan.
+  </p>
+</section>

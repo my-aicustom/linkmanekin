@@ -1,0 +1,62 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SpecDrawer from '../components/SpecDrawer.astro';
+import WhatsAppQuoteModal from '../components/WhatsAppQuoteModal.astro';
+import '../styles/global.css';
+import '@fontsource/cormorant-garamond/latin-400.css';
+import '@fontsource/cormorant-garamond/latin-400-italic.css';
+import '@fontsource/cormorant-garamond/latin-500.css';
+import '@fontsource/plus-jakarta-sans/latin-400.css';
+import '@fontsource/plus-jakarta-sans/latin-500.css';
+import '@fontsource/plus-jakarta-sans/latin-600.css';
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#faf8f5" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Link Manekin Indonesia</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="id_ID" />
+    <meta property="og:title" content={`${title} | Link Manekin Indonesia`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta
+      property="og:image"
+      content={new URL('/images/showroom-hero.svg', Astro.site)}
+    />
+    <meta
+      property="og:image:alt"
+      content="Studi sculptural manekin Link Manekin"
+    />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">
+      Lewati ke konten
+    </a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <SpecDrawer />
+    <WhatsAppQuoteModal />
+    <script>
+      import '../scripts/showroom';
+    </script>
+  </body>
+</html>

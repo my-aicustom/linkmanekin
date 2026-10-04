@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MannequinCatalog from '../components/MannequinCatalog.astro';
+---
+
+<Layout
+  title="Katalog Manekin & Display B2B"
+  description="Jelajahi manekin sports, casual, dressmaker, hangers, dan racks. Bandingkan ukuran referensi, material, dan susun penawaran multi-item melalui WhatsApp."
+>
+  <section class="section-shell page-intro">
+    <p class="eyebrow">THE FORM INDEX / LINK MANEKIN</p>
+    <h1>
+      Find your
+      <br />
+      <em>perfect form.</em>
+    </h1>
+    <div class="intro-bottom">
+      <p>
+        Satu ruang untuk seluruh kebutuhan display. Pilih kategori, pelajari
+        proporsi, dan susun koleksi yang paling sesuai dengan brand Anda.
+      </p>
+      <button class="button button-dark" data-quote-open>
+        Susun penawaran ↗
+      </button>
+    </div>
+  </section>
+  <MannequinCatalog heading={false} />
+</Layout>
