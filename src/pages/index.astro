@@ -8,47 +8,69 @@ import CustomFinishingSection from '../components/CustomFinishingSection.astro';
 
 <Layout
   title="Manekin untuk Retail, Sports & Atelier"
-  description="Temukan manekin sports, boutique, dan dressmaker di Link Manekin Indonesia. Jelajahi bentuk, ukuran, custom finishing, dan penawaran B2B dari studio Tangerang."
+  description="Temukan manekin sports, boutique, dan dressmaker di Link Manekin Indonesia. Bandingkan bentuk, ukuran, material, custom finishing, dan susun penawaran B2B."
 >
   <HeroLookbook />
   <BentoShowcase />
+
+  <section class="section-shell statement-section" aria-labelledby="statement-title">
+    <p class="eyebrow">02 / FORM, FIT, FINISH</p>
+    <div class="statement-grid">
+      <h2 id="statement-title">
+        Display yang baik bukan dekorasi.
+        <em>Ia mengarahkan cara produk dilihat.</em>
+      </h2>
+      <div class="statement-notes">
+        <p>
+          Kami memulai dari tiga hal: bentuk yang sesuai kategori, proporsi yang
+          masuk akal untuk busana, dan finishing yang menyatu dengan ruang.
+        </p>
+        <div class="statement-index" aria-label="Prinsip pemilihan display">
+          <span><b>01</b> FORM</span>
+          <span><b>02</b> FIT</span>
+          <span><b>03</b> FINISH</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <MannequinCatalog limit={4} />
   <CustomFinishingSection />
   <section class="section-shell studio-section">
     <div>
-      <p class="eyebrow">04 / FROM OUR STUDIO TO YOUR SPACE</p>
+      <p class="eyebrow">05 / FROM OUR STUDIO TO YOUR SPACE</p>
       <h2>
-        Dirancang untuk
+        Pilih lebih tepat.
         <br />
-        <em>cara Anda bekerja.</em>
+        <em>Pesan lebih jelas.</em>
       </h2>
     </div>
     <div class="studio-text">
       <p>
-        Koleksi yang tepat dimulai dari percakapan yang tepat. Ceritakan
-        kebutuhan ruang, jenis busana, dan skala proyek Anda. Kami bantu
-        menyusun pilihan bentuk sampai finishing.
+        Ceritakan jenis busana, kebutuhan ruang, jumlah unit, dan kota
+        pengiriman. Kami bantu mempersempit pilihan bentuk sampai finishing
+        sebelum penawaran disusun.
       </p>
       <div class="process-list">
         <div class="process-row">
           <span>01</span>
           <div>
             <h3>Pilih bentuk</h3>
-            <p>Temukan pose dan proporsi untuk koleksi Anda.</p>
+            <p>Bandingkan pose, kategori, dan proporsi yang relevan.</p>
           </div>
         </div>
         <div class="process-row">
           <span>02</span>
           <div>
-            <h3>Beri karakter</h3>
-            <p>Sesuaikan material, warna, dan detail base.</p>
+            <h3>Selaraskan finish</h3>
+            <p>Tentukan material, warna, tekstur, dan karakter base.</p>
           </div>
         </div>
         <div class="process-row">
           <span>03</span>
           <div>
-            <h3>Diskusikan kebutuhan</h3>
-            <p>Minta penawaran sesuai jumlah dan kota pengiriman.</p>
+            <h3>Susun RFQ</h3>
+            <p>Kirim kebutuhan multi-item dalam format WhatsApp yang rapi.</p>
           </div>
         </div>
       </div>
