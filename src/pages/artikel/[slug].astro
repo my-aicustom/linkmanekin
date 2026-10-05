@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { articles, type Article } from '../../data/articles';
+
+export function getStaticPaths() {
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props as { article: Article };
+---
+
+<Layout title={article.title} description={article.excerpt}>
+  <article class="article-page">
+    <header class="section-shell article-hero">
+      <a class="article-back" href="/artikel/">← Semua artikel</a>
+      <div class="article-kicker">
+        <span>{article.category}</span>
+        <span>{article.date}</span>
+        <span>{article.readingTime}</span>
+      </div>
+      <h1>{article.title}</h1>
+      <p class="article-lead">{article.intro}</p>
+    </header>
+
+    <div class="article-cover">
+      <img src={article.image} width="1600" height="900" alt="" />
+    </div>
+
+    <div class="section-shell article-body-wrap">
+      <div class="article-body">
+        {article.sections.map((section, index) => (
+          <section>
+            <span class="article-section-number">{String(index + 1).padStart(2, '0')}</span>
+            <h2>{section.heading}</h2>
+            {section.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            {section.bullets && (
+              <ul>
+                {section.bullets.map((item) => <li>{item}</li>)}
+              </ul>
+            )}
+          </section>
+        ))}
+      </div>
+
+      <aside class="article-aside">
+        <p class="eyebrow">NEED A SECOND OPINION?</p>
+        <h2>Diskusikan display Anda.</h2>
+        <p>
+          Kirim jenis produk, kebutuhan ruang, dan jumlah unit. Kami bantu
+          mempersempit pilihan sebelum penawaran.
+        </p>
+        <a class="button button-dark" href="/kontak/">Hubungi studio ↗</a>
+      </aside>
+    </div>
+  </article>
+</Layout>
