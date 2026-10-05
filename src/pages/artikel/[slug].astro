@@ -10,15 +10,49 @@ export function getStaticPaths() {
 }
 
 const { article } = Astro.props as { article: Article };
+const siteUrl = new URL('/', Astro.site);
+const canonical = new URL(`/artikel/${article.slug}/`, Astro.site);
+const articleSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  '@id': `${canonical}#article`,
+  headline: article.title,
+  description: article.excerpt,
+  image: [new URL(article.ogImage, Astro.site)],
+  datePublished: article.datePublished,
+  dateModified: article.dateModified,
+  articleSection: article.category,
+  inLanguage: 'id-ID',
+  mainEntityOfPage: { '@id': `${canonical}#webpage` },
+  author: {
+    '@type': 'Organization',
+    '@id': `${siteUrl}#organization`,
+    name: 'Link Manekin Indonesia',
+  },
+  publisher: { '@id': `${siteUrl}#organization` },
+});
 ---
 
-<Layout title={article.title} description={article.excerpt}>
+<Layout
+  title={article.title}
+  description={article.excerpt}
+  image={article.ogImage}
+  imageAlt={article.imageAlt}
+  ogType="article"
+  publishedTime={article.datePublished}
+  modifiedTime={article.dateModified}
+  breadcrumbs={[
+    { name: 'Beranda', href: '/' },
+    { name: 'Artikel', href: '/artikel/' },
+    { name: article.title, href: `/artikel/${article.slug}/` },
+  ]}
+>
   <article class="article-page">
     <header class="section-shell article-hero">
       <a class="article-back" href="/artikel/">← Semua artikel</a>
       <div class="article-kicker">
         <span>{article.category}</span>
-        <span>{article.date}</span>
+        <time datetime={article.datePublished}>{article.date}</time>
         <span>{article.readingTime}</span>
       </div>
       <h1>{article.title}</h1>
@@ -26,7 +60,13 @@ const { article } = Astro.props as { article: Article };
     </header>
 
     <div class="article-cover">
-      <img src={article.image} width="1600" height="900" alt="" />
+      <img
+        src={article.image}
+        width="1600"
+        height="900"
+        alt={article.imageAlt}
+        decoding="async"
+      />
     </div>
 
     <div class="section-shell article-body-wrap">
@@ -46,14 +86,18 @@ const { article } = Astro.props as { article: Article };
       </div>
 
       <aside class="article-aside">
-        <p class="eyebrow">NEED A SECOND OPINION?</p>
+        <p class="eyebrow">NEXT / FROM RESEARCH TO DISPLAY</p>
         <h2>Diskusikan display Anda.</h2>
         <p>
           Kirim jenis produk, kebutuhan ruang, dan jumlah unit. Kami bantu
           mempersempit pilihan sebelum penawaran.
         </p>
+        {article.relatedLinks.map((link) => (
+          <p><a class="inline-link" href={link.href}>{link.label} ↗</a></p>
+        ))}
         <a class="button button-dark" href="/kontak/">Hubungi studio ↗</a>
       </aside>
     </div>
   </article>
+  <script type="application/ld+json" set:html={articleSchema} />
 </Layout>

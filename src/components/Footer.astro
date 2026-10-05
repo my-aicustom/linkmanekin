@@ -20,20 +20,26 @@ import Arrow from './Arrow.astro';
       <Arrow diagonal />
     </button>
   </div>
+
   <div class="footer-grid">
-    <a href="/" class="footer-brand" style="display: flex; gap: 14px; align-items: flex-start; text-decoration: none;">
+    <a href="/" class="footer-brand" style="display:flex;gap:14px;align-items:flex-start;text-decoration:none;">
       <img
         src="/images/link-manekin-logo.jpeg"
-        alt="Link Manekin Indonesia Logo"
-        style="width: 44px; height: 44px; object-fit: contain; border-radius: 4px; flex-shrink: 0;"
+        alt=""
+        style="width:44px;height:44px;object-fit:contain;border-radius:4px;flex-shrink:0;"
+        width="44"
+        height="44"
+        loading="lazy"
+        decoding="async"
       />
       <div>
         <strong>LINK MANEKIN</strong>
-        <span style="display: block; font-size: 11px; opacity: 0.75; margin-top: 2px;">
-          Professional Custom Mannequin Since 2019.
+        <span style="display:block;font-size:11px;opacity:.75;margin-top:2px;">
+          Manekin & display untuk retail, sports, dan atelier.
         </span>
       </div>
     </a>
+
     <div>
       <p class="eyebrow">THE STUDIO & WHATSAPP</p>
       <p>
@@ -41,40 +47,46 @@ import Arrow from './Arrow.astro';
         <br />
         Kunjungan dengan janji temu.
       </p>
-      <p style="margin-top: 8px;">
-        <a href="https://wa.me/6281389896052" target="_blank" rel="noopener noreferrer" style="color: var(--accent, #c5a880); font-weight: 600; text-decoration: none;">
+      <p style="margin-top:8px;">
+        <a href="https://wa.me/6281389896052" target="_blank" rel="noopener noreferrer" style="font-weight:600;text-decoration:underline;text-underline-offset:3px;">
           WA: 0813-8989-6052 ↗
         </a>
       </p>
     </div>
+
     <div>
       <p class="eyebrow">OFFICIAL SOSMED & STORE</p>
-      <a href="https://www.tiktok.com/@linkmanekinindonesia" target="_blank" rel="noopener noreferrer" style="display: block; margin-bottom: 6px;">
+      <a href="https://www.tiktok.com/@linkmanekinindonesia" target="_blank" rel="noopener noreferrer" style="display:block;margin-bottom:6px;">
         TikTok: @linkmanekinindonesia ↗
       </a>
-      <a href="https://www.instagram.com/linkmanekin/" target="_blank" rel="noopener noreferrer" style="display: block; margin-bottom: 6px;">
+      <a href="https://www.instagram.com/linkmanekin/" target="_blank" rel="noopener noreferrer" style="display:block;margin-bottom:6px;">
         Instagram: @linkmanekin ↗
       </a>
-      <a href="https://www.tokopedia.com/find/pt-link-manekin-indonesia" target="_blank" rel="noopener noreferrer" style="display: block; margin-bottom: 6px;">
+      <a href="https://www.tokopedia.com/find/pt-link-manekin-indonesia" target="_blank" rel="noopener noreferrer" style="display:block;margin-bottom:6px;">
         Tokopedia: PT Link Manekin ↗
       </a>
-      <a href="https://shopee.co.id/search?keyword=pt%20link%20manekin%20indonesia" target="_blank" rel="noopener noreferrer" style="display: block;">
+      <a href="https://shopee.co.id/search?keyword=pt%20link%20manekin%20indonesia" target="_blank" rel="noopener noreferrer" style="display:block;">
         Shopee: PT Link Manekin ↗
       </a>
     </div>
+
     <div>
       <p class="eyebrow">EXPLORE</p>
-      <a href="/katalog/">Seluruh koleksi</a>
+      <a href="/manekin-wanita/">Manekin wanita untuk butik</a>
+      <a href="/manekin-pria/">Manekin pria & menswear</a>
+      <a href="/manekin-jahit/">Manekin jahit & dressmaker</a>
       <a href="/sports-mannequin/">Sports mannequin</a>
-      <a href="/kustom-finishing/">Custom finishing</a>
       <a href="/perlengkapan-display-toko-baju/">Paket display toko baju</a>
+      <a href="/kustom-finishing/">Custom finishing</a>
+      <a href="/katalog/">Seluruh koleksi</a>
       <a href="/artikel/">Artikel & panduan</a>
       <a href="/kontak/">Kontak studio</a>
-      <p class="small-copy" style="margin-top: 12px;">
+      <p class="small-copy" style="margin-top:12px;">
         Retail · Atelier · Sports · Visual Merchandising.
       </p>
     </div>
   </div>
+
   <div class="footer-bottom">
     <span>© {new Date().getFullYear()} Link Manekin Indonesia</span>
     <span>Designed around your collection.</span>

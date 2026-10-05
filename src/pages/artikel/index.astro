@@ -6,6 +6,10 @@ import { articles } from '../../data/articles';
 <Layout
   title="Artikel Manekin & Visual Merchandising"
   description="Panduan memilih manekin untuk retail, sportswear, atelier, dan custom finishing dari Link Manekin Indonesia."
+  breadcrumbs={[
+    { name: 'Beranda', href: '/' },
+    { name: 'Artikel', href: '/artikel/' },
+  ]}
 >
   <section class="section-shell page-intro article-intro">
     <p class="eyebrow">THE DISPLAY JOURNAL / LINK MANEKIN</p>
@@ -33,7 +37,8 @@ import { articles } from '../../data/articles';
               width="900"
               height="700"
               loading={index === 0 ? 'eager' : 'lazy'}
-              alt=""
+              decoding="async"
+              alt={article.imageAlt}
             />
           </a>
           <div class="article-card-body">

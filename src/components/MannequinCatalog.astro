@@ -1,15 +1,20 @@
 ---
 import { products, categories } from '../data/products';
 import Arrow from './Arrow.astro';
+
 interface Props {
   limit?: number;
   category?: string;
+  ids?: string[];
   heading?: boolean;
 }
-const { limit, category, heading = true } = Astro.props;
+
+const { limit, category, ids, heading = true } = Astro.props;
 const selection = products
-  .filter((p) => !category || p.category === category)
+  .filter((product) => !category || product.category === category)
+  .filter((product) => !ids || ids.includes(product.id))
   .slice(0, limit);
+
 const visibleCategories = categories.filter(
   (label) =>
     label === 'Semua' ||
@@ -33,7 +38,8 @@ const visibleCategories = categories.filter(
       </a>
     </div>
   )}
-  {!category && (
+
+  {!category && !ids && (
     <div class="catalog-toolbar">
       <div class="filter-list" role="group" aria-label="Filter kategori">
         {visibleCategories.map((label) => (
@@ -47,6 +53,7 @@ const visibleCategories = categories.filter(
       </span>
     </div>
   )}
+
   <div class="product-grid">
     {selection.map((product, index) => (
       <article class="product-card" data-category={product.category}>
@@ -65,6 +72,7 @@ const visibleCategories = categories.filter(
               height="800"
               alt={`Ilustrasi ${product.name}, ${product.description.toLowerCase()}`}
               loading="lazy"
+              decoding="async"
             />
           </button>
           <span class="material-badge">{product.material}</span>

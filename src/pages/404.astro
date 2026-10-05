@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Halaman Tidak Ditemukan"
+  description="Halaman yang Anda cari tidak tersedia. Kembali ke showroom Link Manekin atau jelajahi katalog manekin dan display."
+  noindex={true}
+>
+  <section class="section-shell page-intro">
+    <p class="eyebrow">404 / PAGE NOT FOUND</p>
+    <h1>
+      Halaman ini tidak ada.
+      <br />
+      <em>Showroom-nya tetap terbuka.</em>
+    </h1>
+    <div class="intro-bottom">
+      <p>
+        URL mungkin berubah atau salah ketik. Kembali ke showroom, lihat koleksi,
+        atau mulai dari kebutuhan display Anda.
+      </p>
+      <div>
+        <a class="button button-dark" href="/">Kembali ke showroom ↗</a>
+        <a class="inline-link" href="/katalog/">Lihat katalog</a>
+      </div>
+    </div>
+  </section>
+</Layout>

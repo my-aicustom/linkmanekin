@@ -13,51 +13,129 @@ import '@fontsource/cormorant-garamond/latin-500.css';
 import '@fontsource/plus-jakarta-sans/latin-400.css';
 import '@fontsource/plus-jakarta-sans/latin-500.css';
 import '@fontsource/plus-jakarta-sans/latin-600.css';
+
+type Breadcrumb = {
+  name: string;
+  href: string;
+};
+
 interface Props {
   title: string;
   description: string;
+  image?: string;
+  imageAlt?: string;
+  ogType?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  breadcrumbs?: Breadcrumb[];
+  noindex?: boolean;
 }
-const { title, description } = Astro.props;
+
+const {
+  title,
+  description,
+  image,
+  imageAlt = 'Link Manekin Indonesia — manekin dan sistem display retail',
+  ogType = 'website',
+  publishedTime,
+  modifiedTime,
+  breadcrumbs,
+  noindex = false,
+} = Astro.props;
+
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const siteUrl = new URL('/', Astro.site);
+const path = Astro.url.pathname;
+const brandName = 'Link Manekin Indonesia';
+const shortBrand = 'Link Manekin';
+const documentTitle = /link manekin/i.test(title) ? title : `${title} | ${shortBrand}`;
+
+const pageImageMap: Record<string, string> = {
+  '/': '/images/lookbook/premium-mannequin-showroom-moodboard.png',
+  '/katalog/': '/images/lookbook/mannequin-showroom-lookbook-collage.png',
+  '/sports-mannequin/': '/images/lookbook/urban-techwear-mannequin-display.png',
+  '/kustom-finishing/': '/images/lookbook/modern-mannequin-retail-moodboard.png',
+  '/perlengkapan-display-toko-baju/': '/images/lookbook/modern-boutique-mannequin-display-4.png',
+  '/manekin-wanita/': '/images/lookbook/modern-boutique-mannequin-display-4.png',
+  '/manekin-pria/': '/images/lookbook/streetwear-mannequin-modern-boutique.png',
+  '/manekin-jahit/': '/images/lookbook/mannequin-lookbook-warm-retail-collage.png',
+  '/artikel/': '/images/lookbook/mannequin-showroom-lookbook-collage.png',
+  '/kontak/': '/images/lookbook/premium-mannequin-showroom-moodboard.png',
+};
+const resolvedImage = new URL(image || pageImageMap[path] || '/images/link-manekin-logo.jpeg', Astro.site);
+
+const resolvedBreadcrumbs: Breadcrumb[] = breadcrumbs ?? (
+  path === '/'
+    ? []
+    : [
+        { name: 'Beranda', href: '/' },
+        { name: title, href: path },
+      ]
+);
+
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'Organization',
+    '@id': `${siteUrl}#organization`,
+    name: brandName,
+    legalName: 'PT Link Manekin Indonesia',
+    alternateName: shortBrand,
+    url: siteUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: new URL('/images/link-manekin-logo.jpeg', Astro.site),
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'sales',
+      telephone: '+62-813-8989-6052',
+      availableLanguage: ['id'],
+    },
+    sameAs: [
+      'https://www.instagram.com/linkmanekin/',
+      'https://www.tiktok.com/@linkmanekinindonesia',
+    ],
+  },
+  {
+    '@type': 'WebSite',
+    '@id': `${siteUrl}#website`,
+    url: siteUrl,
+    name: brandName,
+    alternateName: shortBrand,
+    inLanguage: 'id-ID',
+    publisher: { '@id': `${siteUrl}#organization` },
+  },
+  {
+    '@type': 'WebPage',
+    '@id': `${canonical}#webpage`,
+    url: canonical,
+    name: documentTitle,
+    description,
+    inLanguage: 'id-ID',
+    isPartOf: { '@id': `${siteUrl}#website` },
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: resolvedImage,
+    },
+  },
+];
+
+if (resolvedBreadcrumbs.length >= 2) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    '@id': `${canonical}#breadcrumb`,
+    itemListElement: resolvedBreadcrumbs.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: new URL(item.href, Astro.site),
+    })),
+  });
+}
+
 const schema = JSON.stringify({
   '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': `${siteUrl}#organization`,
-      name: 'Link Manekin Indonesia',
-      url: siteUrl,
-      logo: new URL('/images/link-manekin-logo.jpeg', Astro.site),
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'sales',
-        telephone: '+62-813-8989-6052',
-        availableLanguage: ['id'],
-      },
-      sameAs: [
-        'https://www.instagram.com/linkmanekin/',
-        'https://www.tiktok.com/@linkmanekinindonesia',
-      ],
-    },
-    {
-      '@type': 'WebSite',
-      '@id': `${siteUrl}#website`,
-      url: siteUrl,
-      name: 'Link Manekin Indonesia',
-      inLanguage: 'id-ID',
-      publisher: { '@id': `${siteUrl}#organization` },
-    },
-    {
-      '@type': 'WebPage',
-      '@id': `${canonical}#webpage`,
-      url: canonical,
-      name: `${title} | Link Manekin Indonesia`,
-      description,
-      inLanguage: 'id-ID',
-      isPartOf: { '@id': `${siteUrl}#website` },
-    },
-  ],
+  '@graph': graph,
 });
 ---
 
@@ -69,27 +147,38 @@ const schema = JSON.stringify({
     <meta name="theme-color" content="#faf8f5" />
     <meta name="color-scheme" content="light" />
     <meta name="description" content={description} />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta
+      name="robots"
+      content={noindex ? 'noindex,follow' : 'index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1'}
+    />
     <meta name="generator" content={Astro.generator} />
-    <title>{title} | Link Manekin Indonesia</title>
+    <meta name="application-name" content={shortBrand} />
+    <meta name="apple-mobile-web-app-title" content={shortBrand} />
+    <title>{documentTitle}</title>
     <meta name="google-site-verification" content="gz5CE8DK-Ts2_a7PxT0A-5yacXuqo1hTzx8Jsvvi4tk" />
-    <link rel="icon" type="image/jpeg" href="/images/link-manekin-logo.jpeg" />
+
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonical} />
-    <meta property="og:type" content="website" />
+
+    <meta property="og:type" content={ogType} />
     <meta property="og:locale" content="id_ID" />
-    <meta property="og:site_name" content="Link Manekin Indonesia" />
-    <meta property="og:title" content={`${title} | Link Manekin Indonesia`} />
+    <meta property="og:site_name" content={brandName} />
+    <meta property="og:title" content={documentTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta
-      property="og:image"
-      content={new URL('/images/link-manekin-logo.jpeg', Astro.site)}
-    />
-    <meta
-      property="og:image:alt"
-      content="Logo Resmi Link Manekin Indonesia"
-    />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={resolvedImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={documentTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={resolvedImage} />
+    <meta name="twitter:image:alt" content={imageAlt} />
+
     <script type="application/ld+json" set:html={schema} />
   </head>
   <body id="top">

@@ -162,7 +162,7 @@ p {
 
 .statement-section > .eyebrow {
   margin-bottom: 30px;
-  color: #80613e;
+  color: #634726;
 }
 
 .statement-grid {
@@ -208,8 +208,8 @@ p {
 }
 
 .statement-index b {
-  color: #8a6035;
-  font-weight: 500;
+  color: #634726;
+  font-weight: 600;
 }
 
 .product-card {
@@ -225,7 +225,7 @@ p {
 }
 
 .product-card:hover .product-heading h3 {
-  color: #80613e;
+  color: #5c3d1e;
 }
 
 .product-heading h3 {
@@ -443,3 +443,23 @@ p {
     clip-path: none;
   }
 }
+
+@media (max-width: 360px) {
+  .section-shell {
+    padding-inline: 12px;
+  }
+  .tiktok-embed-frame {
+    padding: 0;
+    overflow: hidden;
+    max-width: 100%;
+  }
+  .tiktok-embed-frame .tiktok-embed {
+    max-width: 100% !important;
+  }
+  .material-strip {
+    gap: 12px;
+    padding-inline: 12px;
+    font-size: 7px;
+  }
+}
+

@@ -4,9 +4,14 @@ export interface Article {
   title: string;
   excerpt: string;
   date: string;
+  datePublished: string;
+  dateModified: string;
   readingTime: string;
   image: string;
+  imageAlt: string;
+  ogImage: string;
   intro: string;
+  relatedLinks: Array<{ href: string; label: string }>;
   sections: Array<{
     heading: string;
     paragraphs: string[];
@@ -22,10 +27,19 @@ export const articles: Article[] = [
     excerpt:
       'Panduan praktis memilih pose, proporsi, material, dan finishing berdasarkan jenis busana serta karakter ruang retail.',
     date: '5 Oktober 2026',
+    datePublished: '2026-10-05T09:00:00+07:00',
+    dateModified: '2026-10-06T02:00:00+07:00',
     readingTime: '6 menit',
     image: '/images/boutique-muse.svg',
+    imageAlt: 'Ilustrasi manekin fashion butik dengan proporsi untuk display retail',
+    ogImage: '/images/lookbook/modern-boutique-mannequin-display-4.png',
     intro:
       'Manekin yang tepat tidak harus menjadi objek paling mencolok di toko. Tugas utamanya adalah membantu busana terbaca dengan cepat, menjaga proporsi, dan memperkuat karakter visual merchandising.',
+    relatedLinks: [
+      { href: '/manekin-wanita/', label: 'Lihat manekin wanita untuk butik' },
+      { href: '/manekin-pria/', label: 'Lihat manekin pria untuk menswear' },
+      { href: '/perlengkapan-display-toko-baju/', label: 'Susun sistem display toko baju' },
+    ],
     sections: [
       {
         heading: 'Mulai dari produk, bukan dari bentuk manekin',
@@ -61,10 +75,18 @@ export const articles: Article[] = [
     excerpt:
       'Kapan memakai pose sprint, balance, atau stance yang lebih netral untuk membuat sportswear terlihat meyakinkan.',
     date: '5 Oktober 2026',
+    datePublished: '2026-10-05T09:10:00+07:00',
+    dateModified: '2026-10-06T02:00:00+07:00',
     readingTime: '5 menit',
     image: '/images/sports-wide.svg',
+    imageAlt: 'Ilustrasi manekin sports dengan pose dinamis untuk activewear',
+    ogImage: '/images/lookbook/urban-techwear-mannequin-display.png',
     intro:
       'Pada kategori sportswear, pose adalah bagian dari storytelling produk. Gerak yang salah dapat membuat busana terlihat kaku; pose yang tepat membantu pelanggan langsung membaca fungsi koleksi.',
+    relatedLinks: [
+      { href: '/sports-mannequin/', label: 'Lihat koleksi sports mannequin' },
+      { href: '/kustom-finishing/', label: 'Bahas finishing untuk retail sports' },
+    ],
     sections: [
       {
         heading: 'Sprint untuk energi dan performa',
@@ -93,10 +115,18 @@ export const articles: Article[] = [
     excerpt:
       'Tidak semua torso dressmaker bekerja sama. Kenali permukaan, proporsi, sistem stand, dan kebutuhan fitting Anda.',
     date: '5 Oktober 2026',
+    datePublished: '2026-10-05T09:20:00+07:00',
+    dateModified: '2026-10-06T02:00:00+07:00',
     readingTime: '5 menit',
     image: '/images/dressmaker-couture.svg',
+    imageAlt: 'Ilustrasi dressmaker mannequin berlapis linen untuk atelier dan draping',
+    ogImage: '/images/lookbook/mannequin-lookbook-warm-retail-collage.png',
     intro:
       'Dressmaker mannequin adalah alat kerja, bukan hanya display. Pemilihan torso yang tepat membantu proses draping, fitting visual, penyusunan proporsi, dan presentasi hasil jahit.',
+    relatedLinks: [
+      { href: '/manekin-jahit/', label: 'Lihat manekin jahit dan dressmaker' },
+      { href: '/kustom-finishing/', label: 'Lihat opsi finishing dan base' },
+    ],
     sections: [
       {
         heading: 'Tentukan apakah kebutuhan utama Anda fitting atau display',
@@ -125,10 +155,18 @@ export const articles: Article[] = [
     excerpt:
       'Cara membaca efek cahaya dan karakter material sebelum menentukan finishing manekin dan base.',
     date: '5 Oktober 2026',
+    datePublished: '2026-10-05T09:30:00+07:00',
+    dateModified: '2026-10-06T02:00:00+07:00',
     readingTime: '4 menit',
     image: '/images/boutique-essential.svg',
+    imageAlt: 'Ilustrasi manekin butik dengan studi finishing untuk ruang retail',
+    ogImage: '/images/lookbook/modern-mannequin-retail-moodboard.png',
     intro:
       'Finishing memengaruhi bagaimana manekin berinteraksi dengan cahaya, pakaian, dan elemen interior di sekitarnya. Pilihan terbaik bukan selalu yang paling mencolok.',
+    relatedLinks: [
+      { href: '/kustom-finishing/', label: 'Bahas custom finishing, base, dan logo' },
+      { href: '/katalog/', label: 'Bandingkan bentuk di katalog' },
+    ],
     sections: [
       {
         heading: 'Matte untuk visual yang lebih tenang',
