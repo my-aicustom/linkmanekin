@@ -16,6 +16,6 @@ export default defineConfig({
   site:
     process.env.PUBLIC_SITE_URL ||
     publicEnv.PUBLIC_SITE_URL ||
-    'https://linkmanekin.vercel.app',
+    'https://jualmanekin.com',
   vite: { plugins: [tailwindcss()] },
 });
