@@ -1,0 +1,443 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/display-solutions.css';
+
+const phone = '6281389896052';
+const waBase = `https://wa.me/${phone}`;
+const waLink = (message: string) => `${waBase}?text=${encodeURIComponent(message)}`;
+
+const lookbook = [
+  {
+    src: '/images/lookbook/urban-techwear-mannequin-display.png',
+    tag: 'Urban Techwear Display',
+    title: 'Streetwear yang butuh attitude',
+    meta: 'Manekin + layered styling',
+    alt: 'Manekin display pakaian untuk konsep urban techwear dan streetwear',
+  },
+  {
+    src: '/images/lookbook/modern-boutique-mannequin-display-4.png',
+    tag: 'Modern Boutique',
+    title: 'Display butik yang tidak terasa penuh',
+    meta: 'Clean retail composition',
+    alt: 'Display manekin modern untuk butik fashion dengan suasana premium',
+  },
+  {
+    src: '/images/lookbook/modern-boutique-mannequin-display-3.png',
+    tag: 'Boutique Styling',
+    title: 'Satu look, satu cerita',
+    meta: 'Mannequin-led merchandising',
+    alt: 'Manekin butik dengan styling pakaian dalam interior retail modern',
+  },
+  {
+    src: '/images/lookbook/streetwear-mannequin-modern-boutique.png',
+    tag: 'Distro / Skena',
+    title: 'Buat koleksi terasa dipakai, bukan dipajang',
+    meta: 'Streetwear visual display',
+    alt: 'Manekin streetwear untuk distro dan butik fashion urban',
+  },
+  {
+    src: '/images/lookbook/mannequin-showroom-lookbook-collage.png',
+    tag: 'Showroom Lookbook',
+    title: 'Lihat kombinasi sebelum beli satu-satu',
+    meta: 'Form / rack / finish',
+    alt: 'Lookbook perlengkapan display toko baju dengan manekin dan elemen showroom',
+  },
+  {
+    src: '/images/lookbook/premium-mannequin-showroom-moodboard.png',
+    tag: 'Premium Showroom',
+    title: 'Ruang jualan yang terasa punya arah',
+    meta: 'Premium retail moodboard',
+    alt: 'Moodboard showroom premium untuk manekin dan display butik',
+  },
+  {
+    src: '/images/lookbook/modern-mannequin-retail-moodboard.png',
+    tag: 'Retail System',
+    title: 'Bukan cuma manekin. Semua harus nyambung.',
+    meta: 'Display system planning',
+    alt: 'Moodboard retail modern untuk manekin display pakaian dan perlengkapan toko',
+  },
+  {
+    src: '/images/lookbook/mannequin-lookbook-warm-retail-collage.png',
+    tag: 'Warm Atelier',
+    title: 'Untuk butik yang ingin terasa lebih hangat',
+    meta: 'Warm editorial retail',
+    alt: 'Kolase display manekin dengan gaya warm atelier untuk butik fashion',
+  },
+];
+
+const faq = [
+  {
+    q: 'Apa saja isi Paket Buka Toko Baju Lengkap?',
+    a: 'Kami menyusunnya dari kebutuhan ruang dan jenis barang yang dijual. Paket dapat mencakup manekin full body atau torso, gawangan, hanger kayu, hanger jepit celana, serta opsi custom rack dan finishing. Jumlah final disesuaikan ukuran toko, kapasitas display, dan budget.',
+  },
+  {
+    q: 'Untuk bazaar, lebih cocok gawangan biasa atau Gawangan Baju Knock-Down Bazar?',
+    a: 'Kalau sering pindah venue, model knock-down biasanya lebih praktis karena mudah dibongkar, lebih hemat ruang saat dibawa, dan setup-nya lebih fleksibel. Sebelum pesan, cek dimensi saat terlipat, kapasitas gantung, dan jenis sambungannya.',
+  },
+  {
+    q: 'Apa bedanya hanger kayu biasa dengan Hanger Jepit Celana Butik?',
+    a: 'Hanger kayu dipakai untuk atasan, dress, atau outer. Hanger jepit membantu celana dan rok tetap rapi, terutama jika jepitannya bisa digeser dan memiliki pelindung agar tidak meninggalkan bekas pada bahan.',
+  },
+  {
+    q: 'Bisa konsultasi layout sebelum memilih manekin dan gawangan?',
+    a: 'Bisa. Kirim ukuran area, foto ruang, jenis produk, dan perkiraan jumlah pakaian. Dari situ kami bisa membantu menyusun kebutuhan display yang lebih masuk akal sebelum Anda membeli barang satu-satu.',
+  },
+];
+
+const faqSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+});
+---
+
+<Layout
+  title="Perlengkapan Display Toko Baju — Manekin, Gawangan & Hanger Butik"
+  description="Paket Perlengkapan Display Toko Baju untuk butik, distro, streetwear dan bazaar: Manekin Display Pakaian, Gawangan Baju Distro Minimalis, Gantungan Baju Butik Kayu dan hanger jepit celana."
+>
+  <article class="display-solutions">
+    <section class="ds-hero ds-shell" aria-labelledby="display-hero-title">
+      <div class="ds-hero-copy">
+        <span class="ds-badge">Paket Opening Toko & Butik 2026</span>
+        <h1 id="display-hero-title">
+          Perlengkapan Display Toko Baju
+          <em>yang enak dilihat dan enak dipakai jualan.</em>
+        </h1>
+        <p class="ds-lead">
+          Buka butik, distro, atau tenant bazaar jangan mulai dari beli barang satu-satu tanpa arah.
+          Kami bantu menyusun <strong>Manekin Display Pakaian</strong>, <strong>Gawangan Baju Distro Minimalis</strong>,
+          dan <strong>Gantungan Baju Butik Kayu</strong> supaya koleksi terlihat rapi dan operasional toko tetap praktis.
+        </p>
+        <div class="ds-actions">
+          <a
+            class="ds-action ds-action-dark"
+            href={waLink('Halo Link Manekin, saya mau konsultasi paket perlengkapan display untuk toko/butik saya.')}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Konsultasi layout via WhatsApp ↗
+          </a>
+          <a class="ds-action ds-action-light" href="#paket-display">Lihat paket display ↓</a>
+        </div>
+        <div class="ds-hero-notes" aria-label="Cocok untuk">
+          <span>BUTIK & FASHION STORE</span>
+          <span>DISTRO & STREETWEAR</span>
+          <span>BAZAAR & POP-UP TENANT</span>
+        </div>
+      </div>
+
+      <div class="ds-hero-visual">
+        <span class="ds-hero-label">DISPLAY SYSTEM / LOOKBOOK 01</span>
+        <img
+          class="ds-hero-main"
+          src="/images/lookbook/premium-mannequin-showroom-moodboard.png"
+          width="1600"
+          height="1200"
+          fetchpriority="high"
+          alt="Moodboard perlengkapan display toko baju premium untuk butik dan fashion retail"
+        />
+        <img
+          class="ds-hero-float"
+          src="/images/lookbook/urban-techwear-mannequin-display.png"
+          width="900"
+          height="1200"
+          loading="eager"
+          alt="Manekin streetwear untuk display distro modern"
+        />
+      </div>
+    </section>
+
+    <div class="ds-keyword-strip" aria-label="Solusi display utama">
+      <div class="ds-keyword-track">
+        <span>MANEKIN DISPLAY PAKAIAN</span><b>✳</b>
+        <span>GAWANGAN BAJU DISTRO MINIMALIS</span><b>✳</b>
+        <span>GANTUNGAN BAJU BUTIK KAYU</span><b>✳</b>
+        <span>HANGER JEPIT CELANA BUTIK</span><b>✳</b>
+        <span>PAKET BUKA TOKO BAJU LENGKAP</span>
+      </div>
+    </div>
+
+    <section class="ds-section ds-shell" aria-labelledby="three-parts-title">
+      <div class="ds-section-head">
+        <div>
+          <span class="ds-kicker">01 / THREE THINGS THAT HAVE TO WORK TOGETHER</span>
+          <h2 id="three-parts-title">Toko bagus bukan karena satu barang mahal.</h2>
+        </div>
+        <p>
+          Manekin menarik mata, gawangan mengatur ritme ruang, hanger menjaga pakaian tetap rapi.
+          Kalau tiga hal ini dipilih terpisah tanpa memikirkan fungsi, hasilnya sering terasa ramai tetapi tidak efektif.
+        </p>
+      </div>
+
+      <div class="ds-category-grid">
+        <article class="ds-category-card">
+          <span class="ds-card-tag">01 / MANNEQUIN</span>
+          <h3>Manekin Display Pakaian</h3>
+          <p>Full body untuk membangun look lengkap. Torso untuk display yang lebih ringkas dan fleksibel.</p>
+          <ul>
+            <li>Full body / headless / articulated</li>
+            <li>Torso half-body untuk meja & window</li>
+            <li>Finishing matte, gloss, linen atau custom</li>
+          </ul>
+        </article>
+
+        <article class="ds-category-card">
+          <span class="ds-card-tag">02 / GARMENT RACK</span>
+          <h3>Gawangan Baju Distro Minimalis</h3>
+          <p>Untuk display harian, showroom, sampai pop-up yang perlu bongkar-pasang tanpa membuat ruang terasa penuh.</p>
+          <ul>
+            <li>Besi hitam matte / industrial pipe</li>
+            <li>Stainless atau aksen gold untuk butik</li>
+            <li>Opsi Gawangan Baju Knock-Down Bazar</li>
+          </ul>
+        </article>
+
+        <article class="ds-category-card">
+          <span class="ds-card-tag">03 / HANGER</span>
+          <h3>Gantungan Baju Butik Kayu</h3>
+          <p>Detail kecil, tapi paling sering disentuh customer dan paling banyak terlihat saat rak sedang penuh.</p>
+          <ul>
+            <li>Natural / dark oak / luxury white</li>
+            <li>Hanger Jepit Celana Butik anti-slip</li>
+            <li>Opsi logo untuk proyek custom</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="ds-lookbook ds-section" aria-labelledby="lookbook-display-title">
+      <div class="ds-shell">
+        <div class="ds-section-head">
+          <div>
+            <span class="ds-kicker">02 / VISUAL LOOKBOOK</span>
+            <h2 id="lookbook-display-title">Bayangkan tokonya sebelum barang datang.</h2>
+          </div>
+          <p>
+            Referensi ini membantu Anda menentukan karakter display: lebih industrial, lebih warm, lebih premium,
+            atau lebih street. Bukan untuk menyalin mentah-mentah—tetapi supaya percakapan desain jadi konkret.
+          </p>
+        </div>
+
+        <div class="ds-lookbook-grid">
+          {lookbook.map((item) => (
+            <figure class="ds-lookbook-card">
+              <img src={item.src} width="1000" height="1200" loading="lazy" alt={item.alt} />
+              <figcaption class="ds-lookbook-meta">
+                <span>
+                  <span class="ds-lookbook-tag">{item.tag}</span>
+                  <strong>{item.title}</strong>
+                </span>
+                <span>{item.meta}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="paket-display" class="ds-packages ds-shell" aria-labelledby="package-title">
+      <div class="ds-packages-head">
+        <div>
+          <span class="ds-kicker">03 / PAKET BUKA TOKO BAJU LENGKAP</span>
+          <h2 id="package-title">Mulai dari skala toko, bukan dari keranjang belanja.</h2>
+        </div>
+        <p>
+          Paket berikut adalah titik awal konsultasi. Kuantitas, ukuran, finishing, dan detail konstruksi
+          tetap dikonfirmasi sesuai ruang dan kebutuhan produk Anda.
+        </p>
+      </div>
+
+      <div class="ds-package-grid">
+        <article class="ds-package-card">
+          <span class="ds-card-tag">START SMALL / MOVE FAST</span>
+          <h3>Paket Starter</h3>
+          <p>Untuk bazaar, pop-up, live selling, atau toko kecil yang perlu setup cepat dan mudah dibawa.</p>
+          <ul>
+            <li>1 gawangan knock-down</li>
+            <li>50 hanger kayu butik</li>
+            <li>1 torso manekin</li>
+            <li>Konsultasi susunan display dasar</li>
+          </ul>
+          <a
+            class="ds-action"
+            href={waLink('Halo Link Manekin, saya tertarik Paket Starter untuk bazaar / pop-up. Bisa dibantu estimasi dan ukurannya?')}
+            target="_blank"
+            rel="noopener noreferrer"
+          >Minta estimasi Starter ↗</a>
+        </article>
+
+        <article class="ds-package-card featured">
+          <span class="ds-card-tag">MOST PRACTICAL / DAILY RETAIL</span>
+          <h3>Paket Boutique Pro</h3>
+          <p>Untuk butik atau distro yang sudah punya ruang tetap dan ingin display terasa konsisten dari window sampai rack.</p>
+          <ul>
+            <li>2 manekin full body</li>
+            <li>2 gawangan industrial / minimalis</li>
+            <li>150 hanger butik</li>
+            <li>Hanger jepit untuk celana / rok</li>
+            <li>Konsultasi layout dan finishing</li>
+          </ul>
+          <a
+            class="ds-action"
+            href={waLink('Halo Link Manekin, saya mau konsultasi Paket Boutique Pro untuk toko saya. Saya bisa kirim ukuran ruang dan foto lokasi.')}
+            target="_blank"
+            rel="noopener noreferrer"
+          >Konsultasi Boutique Pro ↗</a>
+        </article>
+
+        <article class="ds-package-card">
+          <span class="ds-card-tag">CUSTOM / BRAND LED</span>
+          <h3>Paket Flagship Store</h3>
+          <p>Untuk brand yang ingin sistem display lebih khas dan siap dikembangkan menjadi identitas visual toko.</p>
+          <ul>
+            <li>Custom rack layout</li>
+            <li>Premium headless mannequin</li>
+            <li>Opsi hanger laser-logo</li>
+            <li>Koordinasi warna, base & material</li>
+            <li>Perencanaan kebutuhan per zona</li>
+          </ul>
+          <a
+            class="ds-action"
+            href={waLink('Halo Link Manekin, saya ingin bahas Paket Flagship Store dan custom rack layout. Bisa konsultasi dari layout/foto toko?')}
+            target="_blank"
+            rel="noopener noreferrer"
+          >Bahas proyek custom ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="ds-conversation" aria-labelledby="practical-title">
+      <div class="ds-shell ds-conversation-grid">
+        <div>
+          <span class="ds-kicker">04 / BEFORE YOU BUY</span>
+          <h2 id="practical-title">Jangan pilih perlengkapan toko cuma dari fotonya.</h2>
+        </div>
+        <div class="ds-question-list">
+          <article class="ds-question">
+            <span>01</span>
+            <div>
+              <h3>Kalau sering ikut bazaar, jangan pakai gawangan yang makan tempat di mobil.</h3>
+              <p>Ukuran saat dibongkar, cara sambungan, berat, dan waktu setup jauh lebih penting daripada sekadar bentuknya.</p>
+            </div>
+          </article>
+          <article class="ds-question">
+            <span>02</span>
+            <div>
+              <h3>Manekin harus mengikuti jenis pakaian yang paling sering Anda jual.</h3>
+              <p>Sportswear butuh pose dan proporsi berbeda dengan dress, tailoring, modest fashion, atau casualwear.</p>
+            </div>
+          </article>
+          <article class="ds-question">
+            <span>03</span>
+            <div>
+              <h3>Hanger murah bisa jadi mahal kalau pakaian sering jatuh atau meninggalkan bekas.</h3>
+              <p>Untuk rok dan celana, perhatikan kekuatan jepit, pelindung pada clip, lebar, serta finishing kayunya.</p>
+            </div>
+          </article>
+          <article class="ds-question">
+            <span>04</span>
+            <div>
+              <h3>Hitung kapasitas rack dari stok yang benar-benar mau dipajang.</h3>
+              <p>Terlalu padat bikin koleksi sulit dilihat; terlalu kosong membuat display kehilangan energi. Kita cari titik yang masuk akal.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section ds-shell" aria-labelledby="proof-title">
+      <div class="ds-section-head">
+        <div>
+          <span class="ds-kicker">05 / MATERIAL & DURABILITY CHECK</span>
+          <h2 id="proof-title">Bagus difoto saja tidak cukup.</h2>
+        </div>
+        <p>
+          Untuk proyek custom, spesifikasi material dibahas di awal dan dikonfirmasi lagi pada penawaran.
+          Tujuannya sederhana: barang tetap enak dipakai setelah toko ramai, bukan cuma bagus saat opening.
+        </p>
+      </div>
+
+      <div class="ds-proof-grid">
+        <article class="ds-proof">
+          <span class="ds-proof-index">01 / WOOD</span>
+          <h3>Kayu & finishing</h3>
+          <p>Opsi kayu solid, warna natural/dark oak/white, serta treatment sesuai kebutuhan proyek dapat dikonfirmasi sebelum produksi.</p>
+        </article>
+        <article class="ds-proof">
+          <span class="ds-proof-index">02 / STEEL</span>
+          <h3>Ketebalan besi</h3>
+          <p>Untuk rack, kami bahas panjang bentang, beban gantung, finishing, dan konstruksi supaya tidak mudah melenting saat dipakai.</p>
+        </article>
+        <article class="ds-proof">
+          <span class="ds-proof-index">03 / JOINT</span>
+          <h3>Sambungan knock-down</h3>
+          <p>Untuk kebutuhan pindah-pindah, sambungan harus mudah dirakit tetapi tetap presisi saat berdiri dan digunakan berulang.</p>
+        </article>
+        <article class="ds-proof">
+          <span class="ds-proof-index">04 / FIT</span>
+          <h3>Ukuran yang masuk akal</h3>
+          <p>Dimensi manekin, hanger, dan gawangan perlu disesuaikan dengan ukuran pakaian, lebar ruang, dan alur customer.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="ds-section ds-shell" aria-labelledby="usecase-title">
+      <div class="ds-section-head">
+        <div>
+          <span class="ds-kicker">06 / BUILT AROUND THE STORE</span>
+          <h2 id="usecase-title">Satu toko dengan toko lain tidak perlu dipaksa sama.</h2>
+        </div>
+        <p>Kami mulai dari cara Anda jualan, bukan dari produk mana yang paling ingin kami dorong.</p>
+      </div>
+
+      <div class="ds-usecase-grid">
+        <div class="ds-usecase"><strong>Butik wanita</strong><span>Dress, outer, modest wear, tailoring ringan.</span></div>
+        <div class="ds-usecase"><strong>Distro & streetwear</strong><span>Graphic tee, denim, cargo, sneakers, layered styling.</span></div>
+        <div class="ds-usecase"><strong>Bazaar & pop-up</strong><span>Portable, cepat setup, mudah dibawa dan dibongkar.</span></div>
+        <div class="ds-usecase"><strong>Brand growing</strong><span>Mulai dari paket standar, lalu custom ketika kebutuhan sudah jelas.</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section ds-shell ds-faq" aria-labelledby="faq-title">
+      <div class="ds-section-head">
+        <div>
+          <span class="ds-kicker">07 / PERTANYAAN YANG SERING MUNCUL</span>
+          <h2 id="faq-title">Sebelum Anda pesan.</h2>
+        </div>
+        <p>Jawaban singkat untuk kebutuhan yang paling sering dibahas ketika menyiapkan display toko baru.</p>
+      </div>
+
+      {faq.map((item) => (
+        <details>
+          <summary>{item.q}</summary>
+          <p>{item.a}</p>
+        </details>
+      ))}
+    </section>
+
+    <section class="ds-final">
+      <div class="ds-shell ds-final-grid">
+        <div>
+          <span class="ds-kicker">08 / START WITH YOUR SPACE</span>
+          <h2>Kirim ukuran toko. Kami bantu mulai dari yang benar-benar perlu.</h2>
+          <p>
+            Tidak harus langsung ambil paket terbesar. Kirim foto ruang, ukuran area, jenis pakaian,
+            dan budget kisaran. Dari situ kita bisa bicara lebih konkret.
+          </p>
+        </div>
+        <a
+          class="ds-action"
+          href={waLink('Halo Link Manekin, saya mau konsultasi Perlengkapan Display Toko Baju. Saya siap kirim foto dan ukuran ruang.')}
+          target="_blank"
+          rel="noopener noreferrer"
+        >Mulai konsultasi WhatsApp ↗</a>
+      </div>
+    </section>
+
+    <script type="application/ld+json" set:html={faqSchema} />
+  </article>
+</Layout>
