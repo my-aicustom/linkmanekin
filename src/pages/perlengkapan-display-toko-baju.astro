@@ -137,16 +137,18 @@ const faqSchema = JSON.stringify({
           src="/images/lookbook/premium-mannequin-showroom-moodboard.png"
           width="1600"
           height="1200"
+          loading="eager"
+          decoding="async"
           fetchpriority="high"
           alt="Moodboard perlengkapan display toko baju premium untuk butik dan fashion retail"
         />
         <img
           class="ds-hero-float"
-          src="/images/lookbook/urban-techwear-mannequin-display.png"
-          width="900"
-          height="1200"
-          loading="eager"
-          alt="Manekin streetwear untuk display distro modern"
+          src="/images/boutique-muse.svg"
+          width="650"
+          height="800"
+          decoding="async"
+          alt="Studi manekin butik sebagai aksen visual display"
         />
       </div>
     </section>
@@ -225,7 +227,15 @@ const faqSchema = JSON.stringify({
         <div class="ds-lookbook-grid">
           {lookbook.map((item) => (
             <figure class="ds-lookbook-card">
-              <img src={item.src} width="1000" height="1200" loading="lazy" alt={item.alt} />
+              <img
+                src={item.src}
+                width="1000"
+                height="1200"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                alt={item.alt}
+              />
               <figcaption class="ds-lookbook-meta">
                 <span>
                   <span class="ds-lookbook-tag">{item.tag}</span>
