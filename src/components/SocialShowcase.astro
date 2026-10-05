@@ -1,0 +1,105 @@
+---
+const instagram = 'https://www.instagram.com/linkmanekin/';
+const tiktok = 'https://www.tiktok.com/@linkmanekinindonesia';
+---
+
+<section class="social-showcase section-shell" aria-labelledby="social-showcase-title" data-social-showcase>
+  <div class="social-showcase-heading">
+    <div>
+      <p class="eyebrow">FROM THE SOCIAL STUDIO</p>
+      <h2 id="social-showcase-title">
+        Bentuk yang hidup
+        <br />
+        <em>di luar katalog.</em>
+      </h2>
+    </div>
+    <p>
+      Lihat update terbaru, detail produk, dan video display langsung dari kanal
+      resmi Link Manekin.
+    </p>
+  </div>
+
+  <div class="social-showcase-grid">
+    <article class="social-embed-card instagram-card">
+      <div class="social-card-top">
+        <div>
+          <span class="eyebrow">INSTAGRAM</span>
+          <h3>@linkmanekin</h3>
+        </div>
+        <a href={instagram} target="_blank" rel="noopener noreferrer">Buka Instagram ↗</a>
+      </div>
+      <div class="social-embed-frame instagram-embed-frame">
+        <iframe
+          title="Instagram Link Manekin"
+          data-social-iframe
+          data-src="https://www.instagram.com/linkmanekin/embed/"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="encrypted-media"
+        ></iframe>
+        <noscript>
+          <a href={instagram} target="_blank" rel="noopener noreferrer">Lihat Instagram @linkmanekin</a>
+        </noscript>
+      </div>
+    </article>
+
+    <article class="social-embed-card tiktok-card">
+      <div class="social-card-top">
+        <div>
+          <span class="eyebrow">TIKTOK</span>
+          <h3>@linkmanekinindonesia</h3>
+        </div>
+        <a href={tiktok} target="_blank" rel="noopener noreferrer">Buka TikTok ↗</a>
+      </div>
+      <div class="social-embed-frame tiktok-embed-frame">
+        <blockquote
+          class="tiktok-embed"
+          cite={tiktok}
+          data-unique-id="linkmanekinindonesia"
+          data-embed-type="creator"
+          style="max-width: 100%; min-width: 288px;"
+        >
+          <section>
+            <a target="_blank" rel="noopener noreferrer" href={tiktok}>
+              @linkmanekinindonesia
+            </a>
+          </section>
+        </blockquote>
+      </div>
+    </article>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-social-showcase]');
+  if (root) {
+    const activate = () => {
+      root.querySelectorAll<HTMLIFrameElement>('[data-social-iframe]').forEach((frame) => {
+        if (!frame.src || frame.src === 'about:blank') frame.src = frame.dataset.src || '';
+      });
+
+      if (!document.querySelector('script[data-linkmanekin-tiktok]')) {
+        const script = document.createElement('script');
+        script.src = 'https://www.tiktok.com/embed.js';
+        script.async = true;
+        script.dataset.linkmanekinTiktok = 'true';
+        document.body.append(script);
+      }
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            activate();
+            observer.disconnect();
+          }
+        },
+        { rootMargin: '500px 0px' },
+      );
+      observer.observe(root);
+    } else {
+      activate();
+    }
+  }
+</script>
