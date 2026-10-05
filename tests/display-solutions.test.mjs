@@ -49,7 +49,8 @@ test('display solutions page exposes three bundles and a direct WhatsApp CTA', a
   for (const tier of ['Paket Starter', 'Paket Boutique Pro', 'Paket Flagship Store']) {
     assert.ok(source.includes(tier), `missing bundle tier: ${tier}`);
   }
-  assert.match(source, /wa\.me\/6281389896052/);
+  assert.ok(source.includes('https://wa.me/'));
+  assert.ok(source.includes("const phone = '6281389896052'"));
   assert.match(styles, /min-height:\s*48px|height:\s*48px|--touch:\s*48px/);
 });
 
