@@ -6,6 +6,7 @@ const pagePath = new URL(
   '../src/pages/perlengkapan-display-toko-baju.astro',
   import.meta.url,
 );
+const stylePath = new URL('../src/styles/display-solutions.css', import.meta.url);
 
 async function pageSource() {
   return readFile(pagePath, 'utf8');
@@ -44,9 +45,10 @@ test('display solutions page uses all eight approved lookbook assets', async () 
 
 test('display solutions page exposes three bundles and a direct WhatsApp CTA', async () => {
   const source = await pageSource();
+  const styles = await readFile(stylePath, 'utf8');
   for (const tier of ['Paket Starter', 'Paket Boutique Pro', 'Paket Flagship Store']) {
     assert.ok(source.includes(tier), `missing bundle tier: ${tier}`);
   }
   assert.match(source, /wa\.me\/6281389896052/);
-  assert.match(source, /min-height:\s*48px|height:\s*48px|--touch:\s*48px/);
+  assert.match(styles, /min-height:\s*48px|height:\s*48px|--touch:\s*48px/);
 });
