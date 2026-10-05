@@ -2,7 +2,7 @@ name: verify
 
 on:
   push:
-    branches: [main, 'refine/**']
+    branches: [main]
   pull_request:
     branches: [main]
 
