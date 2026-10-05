@@ -4,6 +4,8 @@ import HeroLookbook from '../components/HeroLookbook.astro';
 import BentoShowcase from '../components/BentoShowcase.astro';
 import MannequinCatalog from '../components/MannequinCatalog.astro';
 import CustomFinishingSection from '../components/CustomFinishingSection.astro';
+import SocialShowcase from '../components/SocialShowcase.astro';
+import { articles } from '../data/articles';
 ---
 
 <Layout
@@ -36,6 +38,7 @@ import CustomFinishingSection from '../components/CustomFinishingSection.astro';
 
   <MannequinCatalog limit={4} />
   <CustomFinishingSection />
+
   <section class="section-shell studio-section">
     <div>
       <p class="eyebrow">05 / FROM OUR STUDIO TO YOUR SPACE</p>
@@ -76,4 +79,38 @@ import CustomFinishingSection from '../components/CustomFinishingSection.astro';
       </div>
     </div>
   </section>
+
+  <section class="section-shell article-index" aria-labelledby="journal-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">06 / THE DISPLAY JOURNAL</p>
+        <h2 id="journal-title">
+          Beli lebih paham.
+          <br />
+          <em>Display lebih matang.</em>
+        </h2>
+      </div>
+      <a class="inline-link" href="/artikel/">Lihat semua artikel ↗</a>
+    </div>
+    <div class="article-grid">
+      {articles.slice(0, 3).map((article) => (
+        <article class="article-card">
+          <a class="article-card-image" href={`/artikel/${article.slug}/`} aria-label={`Baca ${article.title}`}>
+            <img src={article.image} width="900" height="700" loading="lazy" alt="" />
+          </a>
+          <div class="article-card-body">
+            <div class="article-card-meta">
+              <span>{article.category}</span>
+              <span>{article.readingTime}</span>
+            </div>
+            <h2><a href={`/artikel/${article.slug}/`}>{article.title}</a></h2>
+            <p>{article.excerpt}</p>
+            <a class="inline-link" href={`/artikel/${article.slug}/`}>Baca artikel ↗</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <SocialShowcase />
 </Layout>
