@@ -3,8 +3,10 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SpecDrawer from '../components/SpecDrawer.astro';
 import WhatsAppQuoteModal from '../components/WhatsAppQuoteModal.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
 import '../styles/global.css';
 import '../styles/polish.css';
+import '../styles/content.css';
 import '@fontsource/cormorant-garamond/latin-400.css';
 import '@fontsource/cormorant-garamond/latin-400-italic.css';
 import '@fontsource/cormorant-garamond/latin-500.css';
@@ -27,6 +29,16 @@ const schema = JSON.stringify({
       name: 'Link Manekin Indonesia',
       url: siteUrl,
       logo: new URL('/images/link-manekin-logo.jpeg', Astro.site),
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'sales',
+        telephone: '+62-813-8989-6052',
+        availableLanguage: ['id'],
+      },
+      sameAs: [
+        'https://www.instagram.com/linkmanekin/',
+        'https://www.tiktok.com/@linkmanekinindonesia',
+      ],
     },
     {
       '@type': 'WebSite',
@@ -86,6 +98,7 @@ const schema = JSON.stringify({
       <slot />
     </main>
     <Footer />
+    <FloatingWhatsApp />
     <SpecDrawer />
     <WhatsAppQuoteModal />
     <script>
