@@ -43,6 +43,22 @@ test('display solutions page uses all eight approved lookbook assets', async () 
   }
 });
 
+test('approved lookbook assets are curated once instead of repeated as filler', async () => {
+  const source = await pageSource();
+  for (const asset of [
+    '/images/lookbook/urban-techwear-mannequin-display.png',
+    '/images/lookbook/modern-boutique-mannequin-display-4.png',
+    '/images/lookbook/modern-boutique-mannequin-display-3.png',
+    '/images/lookbook/streetwear-mannequin-modern-boutique.png',
+    '/images/lookbook/mannequin-showroom-lookbook-collage.png',
+    '/images/lookbook/premium-mannequin-showroom-moodboard.png',
+    '/images/lookbook/modern-mannequin-retail-moodboard.png',
+    '/images/lookbook/mannequin-lookbook-warm-retail-collage.png',
+  ]) {
+    assert.equal(source.split(asset).length - 1, 1, `asset should appear once: ${asset}`);
+  }
+});
+
 test('display solutions page exposes three bundles and a direct WhatsApp CTA', async () => {
   const source = await pageSource();
   const styles = await readFile(stylePath, 'utf8');
@@ -64,10 +80,28 @@ test('editorial refinement avoids template-like hero and repetitive card stacks'
   assert.ok(source.includes('ds-material-story'), 'material proof should use visual storytelling');
 });
 
+test('hero behaves like a campaign opener rather than a landing-page component stack', async () => {
+  const source = await pageSource();
+  const hero = source.match(/<section class="ds-hero[\s\S]*?<\/section>/)?.[0] ?? '';
+  assert.ok(hero.includes('/images/lookbook/modern-boutique-mannequin-display-4.png'));
+  assert.ok(!hero.includes('moodboard.png'), 'hero LCP should be a single-scene campaign visual');
+  assert.ok(!hero.includes('collage.png'), 'hero LCP should not be a collage');
+  assert.ok(!hero.includes('ds-badge'), 'campaign hero should not carry a badge component');
+  assert.ok(!hero.includes('ds-hero-footnote'), 'campaign hero should not carry a footnote stack');
+  assert.equal((hero.match(/<a\b/g) ?? []).length, 2, 'hero should have one CTA and one text link');
+});
+
 test('keyword presentation reads like human retail copy instead of a keyword ticker', async () => {
   const source = await pageSource();
   assert.ok(source.includes('Manekin. Gawangan. Hanger. Satu sistem display.'));
   assert.ok(!source.includes('ds-keyword-track'), 'keyword ticker should be removed');
+});
+
+test('use-case and material sections avoid duplicated moodboard collage treatment', async () => {
+  const source = await pageSource();
+  assert.ok(source.includes('ds-usecase-notes'), 'use cases should be a typographic retail note sequence');
+  assert.ok(!source.includes('ds-material-secondary'), 'material story should use one confident visual');
+  assert.ok(!source.includes('ds-usecase-layout'), 'use cases should not repeat the image-plus-list template');
 });
 
 test('mobile and reading rhythm use comfortable body type and compact media', async () => {
