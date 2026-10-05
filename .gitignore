@@ -27,3 +27,4 @@ graphify-out/
 .env.*
 !.env.example
 .npm-cache/
+.vercel

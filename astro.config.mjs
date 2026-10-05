@@ -16,6 +16,6 @@ export default defineConfig({
   site:
     process.env.PUBLIC_SITE_URL ||
     publicEnv.PUBLIC_SITE_URL ||
-    'https://my-aicustom.github.io/linkmanekin',
+    'https://linkmanekin.vercel.app',
   vite: { plugins: [tailwindcss()] },
 });

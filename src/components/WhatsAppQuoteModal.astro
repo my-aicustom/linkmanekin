@@ -1,6 +1,8 @@
 ---
 import { products, finishes } from '../data/products';
-const phone = (import.meta.env.PUBLIC_WHATSAPP_NUMBER || '').trim();
+const phone = (
+  import.meta.env.PUBLIC_WHATSAPP_NUMBER || '6281389896052'
+).trim();
 if (phone && !/^[1-9]\d{7,14}$/.test(phone))
   throw new Error(
     'PUBLIC_WHATSAPP_NUMBER harus 8–15 digit dengan kode negara.',
