@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const whatsapp = 'https://wa.me/6281389896052?text=Halo%20Link%20Manekin%2C%20saya%20ingin%20konsultasi%20kebutuhan%20manekin.';
+---
+
+<Layout
+  title="Kontak Link Manekin Indonesia"
+  description="Hubungi Link Manekin Indonesia melalui WhatsApp, Instagram, TikTok, Tokopedia, atau Shopee untuk konsultasi manekin retail, sports, atelier, dan custom finishing."
+>
+  <section class="section-shell page-intro contact-intro">
+    <p class="eyebrow">CONTACT / LINK MANEKIN INDONESIA</p>
+    <h1>
+      Mulai dari kebutuhan.
+      <br />
+      <em>Kami bantu bentuk pilihannya.</em>
+    </h1>
+    <div class="intro-bottom">
+      <p>
+        Untuk katalog, ukuran, custom finishing, ketersediaan, atau kebutuhan
+        proyek B2B, hubungi kanal resmi di bawah ini.
+      </p>
+      <a class="button button-dark" href={whatsapp} target="_blank" rel="noopener noreferrer">
+        Chat WhatsApp ↗
+      </a>
+    </div>
+  </section>
+
+  <section class="section-shell contact-grid" aria-label="Kanal kontak Link Manekin">
+    <a class="contact-card contact-card-primary" href={whatsapp} target="_blank" rel="noopener noreferrer">
+      <span class="eyebrow">FASTEST RESPONSE</span>
+      <h2>WhatsApp</h2>
+      <p>0813-8989-6052</p>
+      <span class="contact-card-link">Mulai konsultasi ↗</span>
+    </a>
+
+    <a class="contact-card" href="https://www.instagram.com/linkmanekin/" target="_blank" rel="noopener noreferrer">
+      <span class="eyebrow">INSTAGRAM</span>
+      <h2>@linkmanekin</h2>
+      <p>Lihat update visual, produk, dan aktivitas terbaru.</p>
+      <span class="contact-card-link">Buka Instagram ↗</span>
+    </a>
+
+    <a class="contact-card" href="https://www.tiktok.com/@linkmanekinindonesia" target="_blank" rel="noopener noreferrer">
+      <span class="eyebrow">TIKTOK</span>
+      <h2>@linkmanekinindonesia</h2>
+      <p>Video produk, detail bentuk, dan konten display.</p>
+      <span class="contact-card-link">Buka TikTok ↗</span>
+    </a>
+
+    <div class="contact-card">
+      <span class="eyebrow">THE STUDIO</span>
+      <h2>Kota Tangerang</h2>
+      <p>Banten, Indonesia. Kunjungan dengan janji temu melalui WhatsApp.</p>
+      <a class="contact-card-link" href={whatsapp} target="_blank" rel="noopener noreferrer">Buat janji ↗</a>
+    </div>
+
+    <a class="contact-card" href="https://www.tokopedia.com/find/pt-link-manekin-indonesia" target="_blank" rel="noopener noreferrer">
+      <span class="eyebrow">MARKETPLACE</span>
+      <h2>Tokopedia</h2>
+      <p>Cari produk PT Link Manekin Indonesia di Tokopedia.</p>
+      <span class="contact-card-link">Buka Tokopedia ↗</span>
+    </a>
+
+    <a class="contact-card" href="https://shopee.co.id/search?keyword=pt%20link%20manekin%20indonesia" target="_blank" rel="noopener noreferrer">
+      <span class="eyebrow">MARKETPLACE</span>
+      <h2>Shopee</h2>
+      <p>Cari produk PT Link Manekin Indonesia di Shopee.</p>
+      <span class="contact-card-link">Buka Shopee ↗</span>
+    </a>
+  </section>
+
+  <section class="section-shell contact-brief" aria-labelledby="contact-brief-title">
+    <div>
+      <p class="eyebrow">BEFORE YOU MESSAGE</p>
+      <h2 id="contact-brief-title">Agar konsultasi lebih cepat.</h2>
+    </div>
+    <ol>
+      <li><span>01</span><p>Sebutkan jenis manekin atau kategori produk yang dicari.</p></li>
+      <li><span>02</span><p>Cantumkan jumlah unit dan kota pengiriman.</p></li>
+      <li><span>03</span><p>Jika custom, kirim referensi warna, logo, atau kebutuhan finishing.</p></li>
+    </ol>
+  </section>
+</Layout>
