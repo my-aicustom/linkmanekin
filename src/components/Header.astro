@@ -6,6 +6,8 @@ const nav = [
   ['/katalog/', 'Koleksi'],
   ['/sports-mannequin/', 'Sports'],
   ['/kustom-finishing/', 'Finishing'],
+  ['/artikel/', 'Artikel'],
+  ['/kontak/', 'Kontak'],
 ];
 ---
 
@@ -25,7 +27,7 @@ const nav = [
   </a>
   <nav class="desktop-nav" aria-label="Navigasi utama">
     {nav.map(([url, label]) => (
-      <a href={url} aria-current={path === url ? 'page' : undefined}>
+      <a href={url} aria-current={path === url || (url !== '/' && path.startsWith(url)) ? 'page' : undefined}>
         {label}
       </a>
     ))}
@@ -46,7 +48,7 @@ const nav = [
   </div>
   <nav id="mobile-nav" class="mobile-nav" aria-label="Navigasi seluler" hidden>
     {nav.map(([url, label]) => (
-      <a href={url} aria-current={path === url ? 'page' : undefined}>
+      <a href={url} aria-current={path === url || (url !== '/' && path.startsWith(url)) ? 'page' : undefined}>
         {label}
       </a>
     ))}
