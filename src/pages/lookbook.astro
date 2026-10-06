@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LookbookGallery from '../components/LookbookGallery.astro';
+import MannequinCatalog from '../components/MannequinCatalog.astro';
+---
+
+<Layout
+  title="Lookbook & Moodboard Display Toko Baju — Link Manekin"
+  description="Koleksi foto lookbook dan moodboard display toko fashion: manekin display butik, distro streetwear, activewear sports, warm atelier couture, dan gawangan baju."
+  image="/images/lookbook/premium-mannequin-showroom-moodboard.png"
+  imageAlt="Koleksi retail lookbook dan moodboard display toko baju"
+  breadcrumbs={[
+    { name: 'Beranda', href: '/' },
+    { name: 'Lookbook', href: '/lookbook/' },
+  ]}
+>
+  <section class="section-shell page-intro">
+    <p class="eyebrow">VISUAL MERCHANDISING PORTFOLIO</p>
+    <h1>
+      Inspirasi display retail
+      <br />
+      <em>dari konsep hingga toko nyata.</em>
+    </h1>
+    <div class="intro-bottom">
+      <p>
+        Jelajahi studi bentuk, penerapan pencahayaan toko, dan keselarasan antara manekin dengan interior retail.
+        Setiap foto lookboard dirancang untuk membantu Anda menemukan karakter display terbaik untuk brand Anda.
+      </p>
+      <a class="button button-dark" href="#lookbook-gallery">Jelajahi 8 konsep display ↘</a>
+    </div>
+  </section>
+
+  <LookbookGallery />
+
+  <section class="section-shell studio-section" aria-labelledby="custom-lookbook-title">
+    <div>
+      <p class="eyebrow">CUSTOM INTERIOR & DISPLAY</p>
+      <h2 id="custom-lookbook-title">
+        Ingin menerapkan konsep
+        <br />
+        <em>serupa di toko Anda?</em>
+      </h2>
+    </div>
+    <div class="studio-text">
+      <p>
+        Diskusikan langsung kebutuhan display Anda bersama tim studio kami. Kami melayani pengadaan manekin custom finishing warna/tekstur, gawangan industrial knock-down, hingga hanger kayu butik berlogo.
+      </p>
+      <p>
+        <a class="button button-dark" href="https://wa.me/6281389896052?text=Halo%20Link%20Manekin%2C%20saya%20mau%20konsultasi%20paket%20display%20seperti%20di%20lookbook." target="_blank" rel="noopener noreferrer">
+          Konsultasi Project via WhatsApp ↗
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <MannequinCatalog limit={4} heading={true} />
+</Layout>

@@ -12,6 +12,7 @@ const staticPages = [
   '/sports-mannequin/',
   '/kustom-finishing/',
   '/perlengkapan-display-toko-baju/',
+  '/lookbook/',
   '/artikel/',
   '/kontak/',
 ];

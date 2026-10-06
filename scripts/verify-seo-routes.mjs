@@ -12,6 +12,7 @@ const routes = [
   '/sports-mannequin/',
   '/kustom-finishing/',
   '/perlengkapan-display-toko-baju/',
+  '/lookbook/',
   '/artikel/',
   '/artikel/cara-memilih-manekin-untuk-toko-fashion/',
   '/kontak/',

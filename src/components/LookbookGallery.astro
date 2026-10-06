@@ -1,0 +1,257 @@
+---
+const lookbookItems = [
+  {
+    image: '/images/lookbook/urban-techwear-mannequin-display.png',
+    title: 'Urban Techwear & Streetwear Display',
+    concept: 'DISTRO & ACTIVEWEAR',
+    description: 'Pose modern dan finishing matte noir untuk mempertegas siluet jacket, hoodie, dan tactical cargo.',
+  },
+  {
+    image: '/images/lookbook/modern-boutique-mannequin-display-4.png',
+    title: 'Modern Boutique Minimalist',
+    concept: 'CLEAN RETAIL FLOW',
+    description: 'Form headless dengan pencahayaan warm spot yang membiarkan busana tetap menjadi fokus utama visual customer.',
+  },
+  {
+    image: '/images/lookbook/modern-boutique-mannequin-display-3.png',
+    title: 'Boutique Tailoring & Dress Display',
+    concept: 'TAILORING & DRESS',
+    description: 'Proporsi tubuh yang proporsional untuk kebaya, dress semi-formal, dan setelan blazer tanpa kerutan bahan.',
+  },
+  {
+    image: '/images/lookbook/streetwear-mannequin-modern-boutique.png',
+    title: 'Streetwear Stance & Menswear',
+    concept: 'MENSWEAR & DENIM',
+    description: 'Postur pria yang kokoh dan dinamis untuk layered styling, kemeja flannel, denim, dan outerwear.',
+  },
+  {
+    image: '/images/lookbook/mannequin-showroom-lookbook-collage.png',
+    title: 'Complete Showroom & Store Display',
+    concept: 'MULTI-ANGLE SHOWCASE',
+    description: 'Kombinasi harmonis antara manekin pose utama, gawangan industrial pipa hitam, dan hanger kayu solid.',
+  },
+  {
+    image: '/images/lookbook/premium-mannequin-showroom-moodboard.png',
+    title: 'Luxury Retail Moodboard',
+    concept: 'WARM LUXURY ATELIER',
+    description: 'Eksplorasi material linen, brass accents, dan pencahayaan studio untuk butik desainer dan bridal boutique.',
+  },
+  {
+    image: '/images/lookbook/modern-mannequin-retail-moodboard.png',
+    title: 'Retail Fixtures Pairing',
+    concept: 'FIXTURES & DISPLAY SYSTEM',
+    description: 'Penyelarasan antara hanger kayu natural, gawangan knock-down, dan manekin dalam satu ekosistem toko.',
+  },
+  {
+    image: '/images/lookbook/mannequin-lookbook-warm-retail-collage.png',
+    title: 'Warm Atelier & Dressmaker Forms',
+    concept: 'COUTURE & FITTING',
+    description: 'Dressmaker form berbalut linen dengan base kayu dan tripod stand untuk studio jahit dan galeri gaun.',
+  },
+];
+---
+
+<section class="section-shell lookbook-gallery-section" id="lookbook-gallery" aria-labelledby="lookbook-gallery-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">RETAIL LOOKBOOK & INSPIRASI DISPLAY</p>
+      <h2 id="lookbook-gallery-title">
+        Visual merchandising
+        <br />
+        <em>di ruang nyata.</em>
+      </h2>
+    </div>
+    <div class="lookbook-header-actions">
+      <p class="section-desc">
+        8 referensi penataan display butik, distro, dan atelier. Lihat bagaimana bentuk, pencahayaan, dan material gawangan bekerja menyatu mengangkat nilai busana Anda.
+      </p>
+      <a class="inline-link" href="/perlengkapan-display-toko-baju/">
+        Lihat paket perlengkapan toko ↗
+      </a>
+    </div>
+  </div>
+
+  <div class="lookbook-masonry-grid">
+    {lookbookItems.map((item, index) => (
+      <article class={`lookbook-card ${index === 0 || index === 4 ? 'featured' : ''}`}>
+        <div class="lookbook-card-media">
+          <img
+            src={item.image}
+            alt={`${item.title} — ${item.description}`}
+            width="900"
+            height="700"
+            loading="lazy"
+            decoding="async"
+          />
+          <span class="lookbook-card-badge">{item.concept}</span>
+        </div>
+        <div class="lookbook-card-content">
+          <span class="lookbook-card-num">{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <div class="lookbook-cta-banner">
+    <div class="lookbook-cta-text">
+      <span class="eyebrow" style="color: #d8b87d;">KONSULTASI DISPLAY TOKO</span>
+      <h3>Punya konsep toko atau foto ruangan?</h3>
+      <p>Kirimkan ukuran ruang dan konsep visual toko Anda via WhatsApp. Studio kami bantu seleksi manekin dan gawangan yang proporsional.</p>
+    </div>
+    <a
+      class="button button-light"
+      href="https://wa.me/6281389896052?text=Halo%20Link%20Manekin%2C%20saya%20tertarik%20dengan%20referensi%20lookbook%20display%20toko%20dan%20ingin%20konsultasi%20penataan."
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Konsultasi via WhatsApp ↗
+    </a>
+  </div>
+</section>
+
+<style>
+  .lookbook-gallery-section {
+    padding-block: clamp(60px, 8vw, 110px);
+    border-top: 1px solid var(--line, #e5e5e5);
+  }
+
+  .lookbook-header-actions {
+    max-width: 460px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .lookbook-masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(24px, 3.5vw, 44px);
+    margin-top: clamp(36px, 5vw, 64px);
+  }
+
+  .lookbook-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line, #e2ded8);
+    background: #ffffff;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .lookbook-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.06);
+  }
+
+  .lookbook-card-media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: #f5f2ed;
+  }
+
+  .lookbook-card.featured .lookbook-card-media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .lookbook-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+  }
+
+  .lookbook-card:hover .lookbook-card-media img {
+    transform: scale(1.03);
+  }
+
+  .lookbook-card-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    padding: 6px 10px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .lookbook-card-content {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 16px;
+    padding: 24px 20px;
+  }
+
+  .lookbook-card-num {
+    font-family: var(--font-display, Georgia, serif);
+    font-size: 18px;
+    color: #634726;
+    font-weight: 600;
+  }
+
+  .lookbook-card-content h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    line-height: 1.35;
+    color: #121212;
+  }
+
+  .lookbook-card-content p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #55514c;
+    margin: 0;
+  }
+
+  .lookbook-cta-banner {
+    margin-top: clamp(48px, 6vw, 80px);
+    padding: clamp(32px, 5vw, 48px);
+    background: #14171c;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    border-radius: 4px;
+  }
+
+  .lookbook-cta-text h3 {
+    font-size: clamp(22px, 3vw, 32px);
+    margin: 8px 0;
+    color: #ffffff;
+  }
+
+  .lookbook-cta-text p {
+    color: #b7bbc1;
+    font-size: 14px;
+    max-width: 580px;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .lookbook-masonry-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .lookbook-card.featured .lookbook-card-media {
+      aspect-ratio: 4 / 3;
+    }
+
+    .lookbook-cta-banner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
