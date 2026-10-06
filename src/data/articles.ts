@@ -30,7 +30,7 @@ export const articles: Article[] = [
     datePublished: '2026-10-05T09:00:00+07:00',
     dateModified: '2026-10-06T02:00:00+07:00',
     readingTime: '6 menit',
-    image: '/images/boutique-muse.svg',
+    image: '/images/photos/mannequin-muse.webp',
     imageAlt: 'Ilustrasi manekin fashion butik dengan proporsi untuk display retail',
     ogImage: '/images/lookbook/modern-boutique-mannequin-display-4.png',
     intro:
@@ -158,7 +158,7 @@ export const articles: Article[] = [
     datePublished: '2026-10-05T09:30:00+07:00',
     dateModified: '2026-10-06T02:00:00+07:00',
     readingTime: '4 menit',
-    image: '/images/boutique-essential.svg',
+    image: '/images/photos/mannequin-essential.webp',
     imageAlt: 'Ilustrasi manekin butik dengan studi finishing untuk ruang retail',
     ogImage: '/images/lookbook/modern-mannequin-retail-moodboard.png',
     intro:

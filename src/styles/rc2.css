@@ -120,7 +120,7 @@
 
 .collection-story-lead {
   display: grid;
-  grid-template-columns: minmax(0, 1.65fr) minmax(280px, 0.35fr);
+  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1fr);
   gap: clamp(28px, 5vw, 74px);
   padding: 18px 0 clamp(54px, 7vw, 92px);
   border-bottom: 1px solid var(--line);
@@ -139,7 +139,8 @@
 }
 
 .collection-story-lead .collection-story-media {
-  min-height: clamp(480px, 55vw, 730px);
+  min-height: 0;
+  aspect-ratio: 3 / 4;
 }
 
 .collection-story-lead .collection-story-media img {
@@ -199,11 +200,12 @@
 
 .collection-story-pair .collection-story {
   display: grid;
-  grid-template-rows: minmax(360px, 46vw) auto;
+  grid-template-rows: auto auto;
 }
 
 .collection-story-pair .collection-story-media {
-  max-height: 610px;
+  aspect-ratio: 3 / 4;
+  max-height: none;
 }
 
 .collection-story-pair .collection-story-copy {
@@ -296,7 +298,7 @@
   }
 
   .collection-story-lead {
-    grid-template-columns: minmax(0, 1.35fr) minmax(230px, 0.65fr);
+    grid-template-columns: minmax(0, 1fr) minmax(230px, 1fr);
   }
 
   .manifesto-rail {
@@ -325,7 +327,7 @@
 
   .campaign-hero-media img {
     height: auto;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 3 / 4;
     object-position: center;
   }
 
@@ -342,7 +344,7 @@
 
   .collection-story-lead .collection-story-media {
     min-height: 0;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 3 / 4;
   }
 
   .collection-story-lead .collection-story-copy {
@@ -379,7 +381,7 @@
   }
 
   .collection-story-pair .collection-story-media {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 3 / 4;
     max-height: none;
   }
 
@@ -497,7 +499,7 @@
 
 .campaign-product-card {
   display: grid;
-  grid-template-rows: minmax(520px, 64vw) auto;
+  grid-template-rows: auto auto;
   min-width: 0;
   background: #f0ece6;
 }
@@ -507,6 +509,7 @@
   place-items: end center;
   overflow: hidden;
   min-height: 0;
+  aspect-ratio: 3 / 4;
   background: #ebe7e1;
 }
 
@@ -515,10 +518,10 @@
 }
 
 .campaign-product-visual img {
-  width: min(86%, 680px);
+  width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
+  object-fit: cover;
+  object-position: center top;
   transition: transform 0.9s var(--ease-editorial);
 }
 
@@ -581,14 +584,14 @@
 }
 
 .product-led-media img {
-  width: min(82%, 620px);
+  width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center bottom;
+  object-fit: cover;
+  object-position: center top;
 }
 
 .collection-story-pair .product-led-media img {
-  width: min(88%, 520px);
+  width: 100%;
 }
 
 .product-spec {
@@ -605,7 +608,7 @@
   }
 
   .campaign-product-card {
-    grid-template-rows: minmax(440px, 118vw) auto;
+    grid-template-rows: auto auto;
   }
 
   .campaign-product-card + .campaign-product-card {
@@ -635,7 +638,7 @@
   }
 
   .campaign-product-card {
-    grid-template-rows: minmax(390px, 124vw) auto;
+    grid-template-rows: auto auto;
   }
 }
 

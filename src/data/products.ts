@@ -23,7 +23,7 @@ export const products: Product[] = [
     name: 'The Sprinter',
     category: 'Sports',
     description: 'Pose lari untuk menampilkan gerak dan potongan activewear.',
-    image: '/images/sports-sprint.svg',
+    image: '/images/photos/mannequin-sprinter.webp',
     material: 'Fiberglass Reinforced',
     finish: 'Matte Noir',
     dimensions: [
@@ -39,7 +39,7 @@ export const products: Product[] = [
     name: 'The Balance',
     category: 'Sports',
     description: 'Siluet seimbang untuk koleksi yoga dan athleisure.',
-    image: '/images/sports-gym.svg',
+    image: '/images/photos/mannequin-balance.webp',
     material: 'Fiberglass Reinforced',
     finish: 'Gloss White',
     dimensions: [
@@ -55,7 +55,7 @@ export const products: Product[] = [
     name: 'The Muse',
     category: 'Casual',
     description: 'Postur tenang dengan proporsi untuk fashion boutique.',
-    image: '/images/boutique-muse.svg',
+    image: '/images/photos/mannequin-muse.webp',
     material: 'Fiberglass Reinforced',
     finish: 'Warm Sand',
     dimensions: [
@@ -71,7 +71,7 @@ export const products: Product[] = [
     name: 'The Essential',
     category: 'Casual',
     description: 'Bentuk tegak serbaguna untuk layering dan menswear.',
-    image: '/images/boutique-essential.svg',
+    image: '/images/photos/mannequin-essential.webp',
     material: 'Polyethylene',
     finish: 'Matte Noir',
     dimensions: [

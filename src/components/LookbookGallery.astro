@@ -74,14 +74,14 @@ const lookbookItems = [
 
   <div class="lookbook-masonry-grid">
     {lookbookItems.map((item, index) => (
-      <article class={`lookbook-card ${index === 0 || index === 4 ? 'featured' : ''}`}>
+      <article class={`lookbook-card ${index < 4 ? 'portrait' : 'landscape'}`}>
         <div class="lookbook-card-media">
           <SiteImage
             src={item.image}
             alt={`${item.title} — ${item.description}`}
-            width="900"
-            height="700"
-            sizes={index === 0 || index === 4 ? '(max-width: 768px) calc(100vw - 32px), 66vw' : '(max-width: 768px) calc(100vw - 32px), 33vw'}
+            width={index < 4 ? 1000 : 1536}
+            height={index < 4 ? 1250 : 1024}
+            sizes="(max-width: 768px) calc(100vw - 32px), 50vw"
             loading="lazy"
             decoding="async"
           />
@@ -151,13 +151,13 @@ const lookbookItems = [
 
   .lookbook-card-media {
     position: relative;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 2;
     overflow: hidden;
     background: #f5f2ed;
   }
 
-  .lookbook-card.featured .lookbook-card-media {
-    aspect-ratio: 16 / 10;
+  .lookbook-card.portrait .lookbook-card-media {
+    aspect-ratio: 4 / 5;
   }
 
   .lookbook-card-media img {
@@ -245,10 +245,6 @@ const lookbookItems = [
   @media (max-width: 768px) {
     .lookbook-masonry-grid {
       grid-template-columns: 1fr;
-    }
-
-    .lookbook-card.featured .lookbook-card-media {
-      aspect-ratio: 4 / 3;
     }
 
     .lookbook-cta-banner {

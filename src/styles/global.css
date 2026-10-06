@@ -532,7 +532,7 @@ button:hover .arrow-icon.diagonal {
 .product-image {
   position: relative;
   background: #eeebe6;
-  aspect-ratio: 0.8;
+  aspect-ratio: 0.75;
   overflow: hidden;
 }
 .image-button {

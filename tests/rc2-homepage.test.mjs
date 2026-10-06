@@ -43,7 +43,7 @@ test('RC2 keeps direct homepage links to the focused commercial landing pages', 
 
 test('RC2 image merchandising makes actual mannequin product art the primary sales visual', async () => {
   const hero = await read('src/components/HeroLookbook.astro');
-  for (const asset of ['/images/boutique-muse.svg', '/images/boutique-essential.svg']) {
+  for (const asset of ['/images/photos/mannequin-muse.webp', '/images/photos/mannequin-essential.webp']) {
     assert.ok(hero.includes(asset), `hero missing mannequin product asset: ${asset}`);
   }
   assert.doesNotMatch(hero, /\/images\/lookbook\//, 'hero should not lead with moodboard/lookbook imagery');
@@ -54,9 +54,8 @@ test('RC2 image merchandising makes actual mannequin product art the primary sal
 test('RC2 collection stories lead with category product images instead of moodboards', async () => {
   const collection = await read('src/components/BentoShowcase.astro');
   for (const asset of [
-    '/images/sports-sprint.svg',
-    '/images/dressmaker-couture.svg',
-    '/images/boutique-muse.svg',
+    '/images/photos/mannequin-sprinter.webp',
+    '/images/photos/mannequin-muse.webp',
   ]) {
     assert.ok(collection.includes(asset), `collection missing product asset: ${asset}`);
   }
