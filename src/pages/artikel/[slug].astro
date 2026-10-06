@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { articles, type Article } from '../../data/articles';
+import { getImage } from 'astro:assets';
+import { imageAsset } from '../../lib/images';
 
 export function getStaticPaths() {
   return articles.map((article) => ({
@@ -10,6 +12,7 @@ export function getStaticPaths() {
 }
 
 const { article } = Astro.props as { article: Article };
+const schemaImage = await getImage({ src: imageAsset(article.ogImage), width: 1200, format: 'jpeg', quality: 80 });
 const siteUrl = new URL('/', Astro.site);
 const canonical = new URL(`/artikel/${article.slug}/`, Astro.site);
 const articleSchema = JSON.stringify({
@@ -18,7 +21,7 @@ const articleSchema = JSON.stringify({
   '@id': `${canonical}#article`,
   headline: article.title,
   description: article.excerpt,
-  image: [new URL(article.ogImage, Astro.site)],
+  image: [new URL(schemaImage.src, Astro.site)],
   datePublished: article.datePublished,
   dateModified: article.dateModified,
   articleSection: article.category,

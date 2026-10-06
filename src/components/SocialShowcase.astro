@@ -73,6 +73,18 @@ const tiktok = 'https://www.tiktok.com/@linkmanekinindonesia';
 <script>
   const root = document.querySelector<HTMLElement>('[data-social-showcase]');
   if (root) {
+    // TikTok creates its iframe asynchronously without an accessible title.
+    const labelTikTokFrames = () => {
+      root.querySelectorAll<HTMLIFrameElement>('.tiktok-embed-frame iframe').forEach((frame) => {
+        frame.title = 'TikTok Link Manekin Indonesia';
+        frame.loading = 'lazy';
+      });
+    };
+    const frameObserver = new MutationObserver(labelTikTokFrames);
+    frameObserver.observe(root, { childList: true, subtree: true });
+    labelTikTokFrames();
+    document.addEventListener('astro:before-swap', () => frameObserver.disconnect(), { once: true });
+
     const activate = () => {
       root.querySelectorAll<HTMLIFrameElement>('[data-social-iframe]').forEach((frame) => {
         if (!frame.src || frame.src === 'about:blank') frame.src = frame.dataset.src || '';

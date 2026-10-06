@@ -1,5 +1,7 @@
 ---
 import Arrow from './Arrow.astro';
+// Tiny 2x brand mark: inline to avoid a separate request for the persistent header.
+import brandMark from '../assets/images/brand-mark.webp?inline';
 const path = Astro.url.pathname;
 const nav = [
   ['/', 'Showroom'],
@@ -15,7 +17,7 @@ const nav = [
 <header class="site-header">
   <a href="/" class="wordmark" aria-label="Link Manekin, halaman utama">
     <img
-      src="/images/link-manekin-logo.jpeg"
+      src={brandMark}
       alt=""
       class="brand-logo"
       width="38"

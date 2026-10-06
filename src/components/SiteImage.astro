@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import type { HTMLAttributes } from 'astro/types';
+import { imageAsset } from '../lib/images';
+
+interface Props extends Omit<HTMLAttributes<'img'>, 'src' | 'width' | 'height'> {
+  src: string;
+  alt: string;
+  width: number | string;
+  height?: number | string;
+}
+
+const { src, width, height: _height, sizes, ...attributes } = Astro.props;
+const source = imageAsset(src);
+const outputWidth = Math.min(Number(width), source.width);
+const widths = outputWidth <= 100
+  ? [outputWidth, Math.min(outputWidth * 2, source.width)]
+  : [...new Set([320, 640, 960, 1280, 1600, outputWidth].filter(value => value <= source.width))].sort((a, b) => a - b);
+const responsiveSizes = sizes || (outputWidth <= 100
+  ? `${outputWidth}px`
+  : '(max-width: 768px) calc(100vw - 32px), (max-width: 1200px) 80vw, 1200px');
+---
+
+<Image
+  {...attributes}
+  src={source}
+  width={outputWidth}
+  widths={widths}
+  sizes={responsiveSizes}
+  format="webp"
+  quality={80}
+/>

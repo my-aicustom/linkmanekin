@@ -1,4 +1,5 @@
 ---
+import SiteImage from './SiteImage.astro';
 const lookbookItems = [
   {
     image: '/images/lookbook/urban-techwear-mannequin-display.png',
@@ -75,11 +76,12 @@ const lookbookItems = [
     {lookbookItems.map((item, index) => (
       <article class={`lookbook-card ${index === 0 || index === 4 ? 'featured' : ''}`}>
         <div class="lookbook-card-media">
-          <img
+          <SiteImage
             src={item.image}
             alt={`${item.title} — ${item.description}`}
             width="900"
             height="700"
+            sizes={index === 0 || index === 4 ? '(max-width: 768px) calc(100vw - 32px), 66vw' : '(max-width: 768px) calc(100vw - 32px), 33vw'}
             loading="lazy"
             decoding="async"
           />

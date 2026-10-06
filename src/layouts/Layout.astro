@@ -4,6 +4,8 @@ import Footer from '../components/Footer.astro';
 import SpecDrawer from '../components/SpecDrawer.astro';
 import WhatsAppQuoteModal from '../components/WhatsAppQuoteModal.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import { getImage } from 'astro:assets';
+import { imageAsset } from '../lib/images';
 import '../styles/global.css';
 import '../styles/polish.css';
 import '../styles/content.css';
@@ -62,7 +64,11 @@ const pageImageMap: Record<string, string> = {
   '/artikel/': '/images/lookbook/mannequin-showroom-lookbook-collage.png',
   '/kontak/': '/images/lookbook/premium-mannequin-showroom-moodboard.png',
 };
-const resolvedImage = new URL(image || pageImageMap[path] || '/images/link-manekin-logo.jpeg', Astro.site);
+const [socialImage, brandLogo] = await Promise.all([
+  getImage({ src: imageAsset(image || pageImageMap[path] || '/images/link-manekin-logo.jpeg'), width: 1200, format: 'jpeg', quality: 80 }),
+  getImage({ src: imageAsset('/images/link-manekin-logo.jpeg'), width: 192, format: 'png' }),
+]);
+const resolvedImage = new URL(socialImage.src, Astro.site);
 
 const resolvedBreadcrumbs: Breadcrumb[] = breadcrumbs ?? (
   path === '/'
@@ -83,7 +89,7 @@ const graph: Record<string, unknown>[] = [
     url: siteUrl,
     logo: {
       '@type': 'ImageObject',
-      url: new URL('/images/link-manekin-logo.jpeg', Astro.site),
+      url: new URL(brandLogo.src, Astro.site),
     },
     contactPoint: {
       '@type': 'ContactPoint',
@@ -157,9 +163,11 @@ const schema = JSON.stringify({
     <title>{documentTitle}</title>
     <meta name="google-site-verification" content="gz5CE8DK-Ts2_a7PxT0A-5yacXuqo1hTzx8Jsvvi4tk" />
 
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png?v=2" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
     <link rel="canonical" href={canonical} />
 
     <meta property="og:type" content={ogType} />

@@ -112,16 +112,6 @@ p {
   display: none;
 }
 
-.collection-section,
-.catalog-section,
-.statement-section,
-.studio-section,
-.faq-section,
-.detail-grid {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 850px;
-}
-
 .lookbook-panel {
   isolation: isolate;
 }
@@ -302,6 +292,11 @@ p {
 
 .faq-section details[open] summary::after {
   transform: rotate(45deg);
+}
+
+/* Keep collapsed answers out of layout and accessibility checks until opened. */
+details:not([open]) > :not(summary) {
+  display: none;
 }
 
 .motion-ready .reveal-item {

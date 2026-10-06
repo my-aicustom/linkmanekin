@@ -1,5 +1,6 @@
 import { products } from '../data/products';
 import { buildQuote, whatsappUrl } from '../lib/quote.mjs';
+import { updateImageLoading } from './image-loading';
 
 const menuToggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
 const mobileNav = document.querySelector<HTMLElement>('#mobile-nav');
@@ -246,6 +247,7 @@ document.querySelectorAll<HTMLElement>('[data-catalog]').forEach((catalog) => {
     );
     const counter = catalog.querySelector('[data-catalog-count]');
     if (counter) counter.textContent = `${count} bentuk`;
+    updateImageLoading();
   }
   filters.forEach((button) =>
     button.addEventListener('click', () => filter(button.dataset.filter!)),

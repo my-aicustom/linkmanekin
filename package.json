@@ -7,10 +7,12 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "icons:generate": "node scripts/generate-favicons.mjs",
     "build": "astro build",
     "check": "astro check",
     "test": "node --test tests/*.test.mjs",
     "verify:browser": "node scripts/verify-browser.mjs",
+    "verify:audit": "node scripts/verify-audit.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
