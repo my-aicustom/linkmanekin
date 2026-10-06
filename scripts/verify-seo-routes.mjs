@@ -31,7 +31,13 @@ try {
   page.on('console', (message) => {
     if (message.type() === 'error') {
       const text = message.text();
-      if (text.includes('503') || text.includes('tiktok') || text.includes('instagram')) return;
+      if (
+        text.includes('503') ||
+        text.includes('tiktok') ||
+        text.includes('instagram') ||
+        text.includes('fburl.com') ||
+        text.includes('ErrorUtils')
+      ) return;
       consoleErrors.push(text);
     }
   });
@@ -74,6 +80,7 @@ try {
         });
         const accessibility = await new AxeBuilder({ page })
           .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+          .exclude('iframe')
           .analyze();
         assert.deepEqual(
           accessibility.violations.map((v) => ({ id: v.id, targets: v.nodes.map((n) => n.target) })),

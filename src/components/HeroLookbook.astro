@@ -2,62 +2,72 @@
 import Arrow from './Arrow.astro';
 ---
 
-<section class="hero section-shell" aria-labelledby="hero-title">
-  <div class="hero-copy">
-    <p class="eyebrow">
-      <span class="tiny-line"></span> SCULPTURAL DISPLAY / INDONESIA
-    </p>
-    <h1 id="hero-title">
-      Bentuk yang
-      <br />
-      <em>mengangkat koleksi.</em>
-    </h1>
-    <p class="hero-description">
-      Manekin untuk retail, activewear, dan atelier—dipilih lewat pose,
-      proporsi, material, dan finishing yang selaras dengan produk Anda.
-    </p>
-    <div class="hero-actions">
-      <a href="/katalog/" class="button button-dark">
-        Jelajahi koleksi <Arrow diagonal />
-      </a>
-      <a href="#lookbook" class="quiet-link">
-        Lihat lookbook <span aria-hidden="true">↓</span>
-      </a>
+<section class="campaign-hero section-shell" aria-labelledby="hero-title">
+  <div class="campaign-hero-heading">
+    <div>
+      <p class="eyebrow">LINK MANEKIN / PRODUCT COLLECTION</p>
+      <h1 id="hero-title">
+        Manekin untuk
+        <em>menjual koleksi.</em>
+      </h1>
     </div>
-    <div class="hero-footnote" aria-label="Fokus Link Manekin">
-      <span>RETAIL / ACTIVEWEAR / ATELIER</span>
-      <span>FORM / FIT / FINISH</span>
+
+    <div class="campaign-hero-intro">
+      <p>
+        Pilih manekin berdasarkan kategori busana, proporsi, pose, material,
+        dan finishing. Fokus kami: produk yang benar-benar bekerja di lantai retail.
+      </p>
+      <div class="campaign-hero-actions">
+        <a href="/katalog/" class="button button-dark">
+          Lihat katalog manekin <Arrow diagonal />
+        </a>
+        <a href="/kontak/" class="inline-link">Minta rekomendasi ↗</a>
+      </div>
     </div>
   </div>
-  <div class="hero-stage">
-    <span class="vertical-label">A STUDY OF FORM — LINK MANEKIN</span>
-    <img
-      src="/images/showroom-hero.svg"
-      width="850"
-      height="1000"
-      alt="Studi manekin atletik berpose sprint dan manekin sand pada podium studio"
-      fetchpriority="high"
-    />
-    <div class="stage-caption">
-      <span>
-        <span class="eyebrow">SIGNATURE DISPLAY FORMS</span>
-        <span>Built around garment, space, and brand.</span>
-      </span>
-      <a href="/katalog/" aria-label="Jelajahi koleksi manekin">
-        <Arrow diagonal />
-      </a>
-    </div>
-    <span class="stage-index" aria-hidden="true">
-      01 <span>/ 03</span>
-    </span>
+
+  <div class="campaign-hero-media campaign-product-stage" aria-label="Pilihan manekin Link Manekin">
+    <a class="campaign-product-card" href="/manekin-wanita/">
+      <div class="campaign-product-visual">
+        <img
+          src="/images/boutique-muse.svg"
+          width="760"
+          height="950"
+          alt="CS-01 The Muse, manekin wanita untuk butik dan retail"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+      <div class="campaign-product-meta">
+        <span class="eyebrow">CS-01 / WOMEN'S RETAIL</span>
+        <strong>The Muse</strong>
+        <span>Warm Sand · Fiberglass Reinforced</span>
+      </div>
+    </a>
+
+    <a class="campaign-product-card" href="/manekin-pria/">
+      <div class="campaign-product-visual">
+        <img
+          src="/images/boutique-essential.svg"
+          width="760"
+          height="950"
+          alt="CS-02 The Essential, manekin pria untuk menswear dan distro"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+      <div class="campaign-product-meta">
+        <span class="eyebrow">CS-02 / MEN'S RETAIL</span>
+        <strong>The Essential</strong>
+        <span>Matte Noir · Polyethylene</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="campaign-product-footer" aria-label="Kategori utama">
+    <span>MANEKIN WANITA</span>
+    <span>MANEKIN PRIA</span>
+    <span>SPORTS MANNEQUIN</span>
+    <span>DRESSMAKER</span>
   </div>
 </section>
-<div class="material-strip" aria-label="Pilihan koleksi">
-  <span>ATHLETIC FORMS</span>
-  <span class="strip-cross" aria-hidden="true">✳</span>
-  <span>TAILORING ESSENTIALS</span>
-  <span class="strip-cross" aria-hidden="true">✳</span>
-  <span>BOUTIQUE DISPLAY</span>
-  <span class="strip-cross" aria-hidden="true">✳</span>
-  <span>CRAFTED FOR YOUR SPACE</span>
-</div>

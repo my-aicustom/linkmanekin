@@ -2,78 +2,83 @@
 import Arrow from './Arrow.astro';
 ---
 
-<section id="lookbook" class="section-shell collection-section">
-  <div class="section-heading">
-    <div>
-      <p class="eyebrow">01 / CURATED COLLECTIONS</p>
-      <h2>
-        Tiga kebutuhan.
-        <br />
-        <em>Tiga bahasa bentuk.</em>
-      </h2>
-    </div>
+<section id="lookbook" class="section-shell collection-section collection-editorial" aria-labelledby="collection-title">
+  <div class="collection-editorial-heading">
+    <p class="eyebrow">01 / SHOP BY USE CASE</p>
+    <h2 id="collection-title">
+      Produk yang berbeda.
+      <em>Fungsi yang jelas.</em>
+    </h2>
     <p>
-      Activewear membutuhkan energi; tailoring menuntut proporsi; retail perlu
-      karakter yang memberi ruang bagi produk untuk tampil.
+      Bukan moodboard generik. Setiap kategori di bawah langsung menunjukkan
+      tipe manekin yang bisa dipilih untuk kebutuhan retail Anda.
     </p>
   </div>
-  <div class="lookbook-grid">
-    <a class="lookbook-panel athletic-panel" href="/sports-mannequin/">
-      <span class="panel-number">I.</span>
-      <img
-        src="/images/sports-sprint.svg"
-        width="650"
-        height="800"
-        loading="lazy"
-        alt="Studi manekin atletik dengan pose berlari"
-      />
-      <div class="panel-caption">
-        <span>
-          <span class="eyebrow">MOTION / TENSION / BALANCE</span>
-          <h3>Athletic forms</h3>
-          <span>Sports & activewear</span>
-        </span>
-        <Arrow diagonal />
+
+  <div class="collection-ledger">
+    <a class="collection-story collection-story-lead" href="/sports-mannequin/">
+      <div class="collection-story-media product-led-media">
+        <img
+          src="/images/sports-sprint.svg"
+          width="760"
+          height="950"
+          loading="lazy"
+          decoding="async"
+          alt="SP-01 The Sprinter, manekin sports pose lari untuk activewear"
+        />
+      </div>
+      <div class="collection-story-copy">
+        <span class="collection-story-index">01</span>
+        <span class="eyebrow">SP-01 / SPORTS</span>
+        <h3>The Sprinter</h3>
+        <p>Pose lari untuk menampilkan gerak, siluet, dan potongan activewear.</p>
+        <span class="product-spec">Fiberglass Reinforced · Matte Noir</span>
+        <span class="collection-story-link">Lihat sports mannequin <Arrow diagonal /></span>
       </div>
     </a>
-    <a
-      class="lookbook-panel atelier-panel"
-      href="/katalog/?kategori=Dressmaker"
-    >
-      <span class="panel-number">II.</span>
-      <img
-        src="/images/dressmaker-couture.svg"
-        width="650"
-        height="800"
-        loading="lazy"
-        alt="Studi torso dressmaker berlapis linen"
-      />
-      <div class="panel-caption">
-        <span>
-          <span class="eyebrow">PROPORTION / DRAPE / FIT</span>
-          <h3>The atelier</h3>
-          <span>Dressmaker & tailoring</span>
-        </span>
-        <Arrow diagonal />
-      </div>
-    </a>
-    <a class="lookbook-panel boutique-panel" href="/katalog/?kategori=Casual">
-      <span class="panel-number">III.</span>
-      <img
-        src="/images/boutique-muse.svg"
-        width="650"
-        height="800"
-        loading="lazy"
-        alt="Studi manekin butik berwarna warm sand"
-      />
-      <div class="panel-caption">
-        <span>
-          <span class="eyebrow">PRESENCE / VERSATILITY</span>
-          <h3>Retail muse</h3>
-          <span>Boutique & visual display</span>
-        </span>
-        <Arrow diagonal />
-      </div>
-    </a>
+
+    <div class="collection-story-pair">
+      <a class="collection-story" href="/manekin-jahit/">
+        <div class="collection-story-media product-led-media">
+          <img
+            src="/images/dressmaker-couture.svg"
+            width="760"
+            height="950"
+            loading="lazy"
+            decoding="async"
+            alt="DR-01 The Atelier, dressmaker mannequin untuk draping dan fitting"
+          />
+        </div>
+        <div class="collection-story-copy">
+          <span class="collection-story-index">02</span>
+          <span class="eyebrow">DR-01 / DRESSMAKER</span>
+          <h3>The Atelier</h3>
+          <p>Torso untuk membaca jatuh kain, proporsi, draping, dan presentasi busana.</p>
+          <span class="product-spec">Pinstickable Foam · Raw Linen</span>
+          <span class="collection-story-link">Lihat manekin jahit <Arrow diagonal /></span>
+        </div>
+      </a>
+
+      <a class="collection-story" href="/manekin-wanita/">
+        <div class="collection-story-media product-led-media">
+          <img
+            src="/images/boutique-muse.svg"
+            width="760"
+            height="950"
+            loading="lazy"
+            decoding="async"
+            alt="CS-01 The Muse, manekin wanita untuk butik dan display retail"
+          />
+        </div>
+        <div class="collection-story-copy">
+          <span class="collection-story-index">03</span>
+          <span class="eyebrow">CS-01 / WOMEN'S RETAIL</span>
+          <h3>The Muse</h3>
+          <p>Postur tenang untuk butik, womenswear, layering, dan window display.</p>
+          <span class="product-spec">Fiberglass Reinforced · Warm Sand</span>
+          <span class="collection-story-link">Lihat manekin wanita <Arrow diagonal /></span>
+        </div>
+      </a>
+    </div>
   </div>
 </section>

@@ -6,6 +6,7 @@ import MannequinCatalog from '../components/MannequinCatalog.astro';
 import CustomFinishingSection from '../components/CustomFinishingSection.astro';
 import SocialShowcase from '../components/SocialShowcase.astro';
 import { articles } from '../data/articles';
+import '../styles/rc2.css';
 ---
 
 <Layout
@@ -15,35 +16,18 @@ import { articles } from '../data/articles';
   <HeroLookbook />
   <BentoShowcase />
 
-  <section class="section-shell statement-section" aria-labelledby="statement-title">
-    <p class="eyebrow">02 / FORM, FIT, FINISH</p>
-    <div class="statement-grid">
-      <h2 id="statement-title">
-        Display yang baik bukan dekorasi.
-        <em>Ia mengarahkan cara produk dilihat.</em>
-      </h2>
-      <div class="statement-notes">
-        <p>
-          Kami memulai dari tiga hal: bentuk yang sesuai kategori, proporsi yang
-          masuk akal untuk busana, dan finishing yang menyatu dengan ruang.
-        </p>
-        <div class="statement-index" aria-label="Prinsip pemilihan display">
-          <span><b>01</b> FORM</span>
-          <span><b>02</b> FIT</span>
-          <span><b>03</b> FINISH</span>
-        </div>
-        <p>
-          <a class="inline-link" href="/manekin-wanita/">Manekin wanita ↗</a>
-          {' · '}
-          <a class="inline-link" href="/manekin-pria/">Manekin pria ↗</a>
-          {' · '}
-          <a class="inline-link" href="/manekin-jahit/">Manekin jahit ↗</a>
-        </p>
-        <a class="inline-link" href="/perlengkapan-display-toko-baju/">
-          Lihat paket perlengkapan display toko baju ↗
-        </a>
-      </div>
-    </div>
+  <section class="manifesto-rail section-shell" aria-label="Prinsip pemilihan display">
+    <span class="eyebrow">02 / FORM · FIT · FINISH</span>
+    <p>
+      Display yang baik bukan dekorasi. Ia mengarahkan cara produk dilihat,
+      tanpa meminta perhatian lebih besar daripada produknya sendiri.
+    </p>
+    <nav class="manifesto-links" aria-label="Jelajahi kategori utama">
+      <a href="/manekin-wanita/">Wanita ↗</a>
+      <a href="/manekin-pria/">Pria ↗</a>
+      <a href="/manekin-jahit/">Atelier ↗</a>
+      <a href="/perlengkapan-display-toko-baju/">Display system ↗</a>
+    </nav>
   </section>
 
   <MannequinCatalog limit={4} />
